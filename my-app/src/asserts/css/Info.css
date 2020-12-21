@@ -1,0 +1,62 @@
+.Info_Login{
+    width: 40%;
+    padding-top: 5%;
+}
+
+.Info_Create{
+    width: 50%;
+    padding-top: 5%;
+    margin-left: 15%;
+    text-align: center;
+    background-image: url('../image/timgXFIKOJKO.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.Info_Login #text{
+    width: 40%;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 7%;
+    margin-top: 5%;
+    padding-left: 2.5%;
+}
+
+.Info_Login #Select{
+    margin-left: 2%;
+    margin-bottom: 5%;
+}
+
+.Info_Create input{
+    width: 40%;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 8%;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    padding-left: 2.5%;
+}
+
+.Info_Login button{
+    width: 43%;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 5.5%;
+}
+
+.Info_Create button{
+    width: 90%;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 5.5%;
+}
+
+.Info_Create #ZhuCe{
+    width: 40%;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 5.5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 10px;
+}

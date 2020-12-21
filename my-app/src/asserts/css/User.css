@@ -1,0 +1,37 @@
+.User{
+    width: 70%;
+    border:5px #00478180 solid;
+    border-radius: 10px;
+    margin-left: 22%;
+    margin-top: 5%;
+}
+
+.User #UserName{
+    float: left;
+    font-size: 20px;
+    margin-left: 10%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.User #Type{
+    font-size: 15px;
+    margin-left: 30%;
+    margin-top: 1.6%;
+    margin-bottom: 1%;
+}
+
+.User #Info{
+    font-size: 15px;
+    margin-left: 10%;
+    margin-top: 1.6%;
+    margin-bottom: 1%;
+}
+
+.User #Info text{
+    margin-right: 5%;
+}
+
+.User #Info a{
+    margin-right: 8%;
+}
