@@ -12,6 +12,8 @@ import RealCreate from './js/RealCreate';
 import Teacher from './js/Teacher/Teacher';
 import TeacherClass from './js/Teacher/TeacherClass';
 import TeacherChange from './js/Teacher/TeacherChange';
+import TeacherClassInfo from './js/Teacher/TeacherClassInfo';
+import TeacherCreateClass from './js/Teacher/TeacherCreateClass';
 
 
 class App extends Component {
@@ -38,6 +40,8 @@ class App extends Component {
                     <Route exact path = "/Teacher" component = {Teacher}></Route>
                     <Route exact path = "/TeacherClass" component = {TeacherClass}></Route>
                     <Route exact path = "/TeacherChange" component = {TeacherChange}></Route>
+                    <Route exact path = "/TeacherClassInfo" component = {TeacherClassInfo}></Route>
+                    <Route exact path = "/TeacherCreateClass" component = {TeacherCreateClass}></Route>
 
                 </div>
             </Router>

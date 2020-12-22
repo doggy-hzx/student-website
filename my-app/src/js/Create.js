@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route ,Redirect } from 'react-router-dom';
 import { Input , Button } from 'antd';
+import { backendUrl } from './Common'
 import '../asserts/css/App.css';
 import '../asserts/css/Logo.css';
 import '../asserts/css/Info.css';
@@ -71,37 +72,37 @@ class Create extends Component {
         }else if(this.state.phone.length!=11){
             alert("电话号码不合法!");
         }else if(this.state.citizen_id.length!=18){
-            alert("身份证号不合法!");
+            alert("学号不合法!");
         }else{
             
-            // fetch(backendUrl+"user/profile/changepass/set_new/",{
-            //     mode:"cors",
-            // credentials: 'include',
-            // })
-            //     .then(res => res.json())
-            //     .then((tokenresult)=>{
-            //     },
-            // (error)=>{
-            //     console.log(error);
-            // })
+            fetch(backendUrl+"user/profile/changepass/set_new/",{
+                mode:"cors",
+                credentials: 'include',
+            })
+                .then(res => res.json())
+                .then((tokenresult)=>{
+                },
+            (error)=>{
+                console.log(error);
+            })
 
-            // fetch("http://127.0.0.1:8000/user/register/post/",{
-            //     method:"post",
-            //     body:JSON.stringify(this.state),
-            //     credentials: 'include',
-            // })
-            //     .then(res => res.json())
-            //     .then((result)=>{
+            fetch(backendUrl + "user/register/post/",{
+                method:"post",
+                body:JSON.stringify(this.state),
+                credentials: 'include',
+            })
+                .then(res => res.json())
+                .then((result)=>{
                     
-            //     },
-            // (error)=>{
-            //     console.log(error);
-            // })
+                },
+            (error)=>{
+                console.log(error);
+            })
 
-            // alert("用户注册成功");
-            // this.setState({
-            //     flag:0,
-            // })
+            alert("用户注册成功");
+            this.setState({
+                flag:0,
+            })
         }
 
     }
@@ -179,7 +180,7 @@ class Create extends Component {
                                 <div>
                                     <div>
                                         <Input type = {this.state.change} name = "确认密码" placeholder = "确认密码" ref = "if_same_code"/>
-                                        <Input type = "text" name = "身份证号" placeholder = "身份证号" ref = "ID" onChange = {(e)=>this.GetID(e)}/>
+                                        <Input type = "text" name = "学号" placeholder = "学号" ref = "ID" onChange = {(e)=>this.GetID(e)}/>
                                     </div>
                                 </div>
                                 <div>

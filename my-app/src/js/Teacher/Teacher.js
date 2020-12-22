@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route ,Redirect } from 'react-router-dom';
 import '../../asserts/css/Teacher.css'
 import Title from '../Title';
 import TeacherSelect from './TeacherSelect';
+import { backendUrl } from '../Common'
 
 
 class User extends Component {
@@ -21,23 +22,23 @@ class User extends Component {
     }
 
     componentDidMount(){
-        // fetch(backendUrl+"user/profile/",{
-        //     method:"get",
-        //     mode:"cors",
-        //     credentials:"include",
-        // })
-        //     .then(res => res.json())
-        //     .then((result)=>{
-        //         this.setState({
-        //             username:result.username,
-        //             phone:result.phone,
-        //             email:result.email,
-        //             real_name:result.real_name,
-        //         })
-        //     },
-        //     (error)=>{
-        //         console.log(error);
-        //     })
+        fetch(backendUrl+"user/profile/",{
+            method:"get",
+            mode:"cors",
+            credentials:"include",
+        })
+            .then(res => res.json())
+            .then((result)=>{
+                this.setState({
+                    username:result.username,
+                    phone:result.phone,
+                    email:result.email,
+                    real_name:result.real_name,
+                })
+            },
+            (error)=>{
+                console.log(error);
+            })
     }
     
     Info=()=>{

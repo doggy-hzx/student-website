@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route ,Redirect } from 'react-router-dom';
-import { Button,Form,Input } from 'antd';
+import { Button,Divider,Form,Input } from 'antd';
 import Title from '../Title';
 import TeacherSelect from './TeacherSelect';
 import '../../asserts/css/Change.css'
@@ -142,16 +142,21 @@ class Change extends Component {
                 <div>
                     <Title></Title>
                     <TeacherSelect Info = {this.Info} Change = {this.Change} Class = {this.Class}></TeacherSelect>
-                    <div className = "Change">
-                        <form>
-                            <Input type = "text" placeholder = {this.state.name} ref = "name" onChange = {(e)=>this.GetUsername(e)}></Input>
-                            <Input type = "text" placeholder = {this.state.email} ref = "email" onChange = {(e)=>this.GetEmail(e)}></Input>
-                            <Input type = "text" placeholder = {this.state.phone} ref = "phone" onChange = {(e)=>this.GetPhone(e)}></Input>
-                            <Input type = "text" placeholder = {this.state.phone} ref = "password" onChange = {(e)=>this.GetPassword(e)}></Input>
-                        </form>
-                        <Button type = "primary" onClick = {this.Submit}>
-                            提交
-                        </Button>
+                    <div>
+                        <Input.Group className = "Change">
+                            <Input prefix = "username" type = "text" placeholder = {this.state.name} ref = "name" onChange = {(e)=>this.GetUsername(e)}></Input>
+                            <Divider type = "vertical"></Divider>
+                            <Input prefix = "email" type = "text" placeholder = {this.state.email} ref = "email" onChange = {(e)=>this.GetEmail(e)}></Input>
+                            <Divider type = "vertical"></Divider>
+                            <Input prefix = "phone" type = "text" placeholder = {this.state.phone} ref = "phone" onChange = {(e)=>this.GetPhone(e)}></Input>
+                            <Divider type = "vertical"></Divider>
+                            <Input prefix = "password" type = "text" placeholder = {this.state.password} ref = "password" onChange = {(e)=>this.GetPassword(e)}></Input>
+                            
+                            <Button onClick = {this.Submit}>
+                                提交
+                            </Button>
+
+                        </Input.Group>
                     </div>
                 </div>
             );

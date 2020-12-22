@@ -33,7 +33,7 @@ class TeacherSelect extends Component {
         if(this.state.flag === 1){
             return (
                 <div className = "TeacherSelect">
-                    <Menu>
+                    <Menu mode  = "inline">
                         <Menu.Item onClick = {this.Info.bind()}>用户信息</Menu.Item>
                         <Menu.Item onClick = {this.Change.bind()}>修改信息</Menu.Item>
                         <Menu.Item onClick = {this.Class.bind()}>开课信息</Menu.Item>

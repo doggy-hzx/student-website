@@ -5,6 +5,7 @@ import Body from './Body';
 import '../asserts/css/App.css';
 import '../asserts/css/Logo.css';
 import '../asserts/css/Info.css';
+import { backendUrl, getCookie, setCookie} from './Common';
 import Title from './Title';
 
 class LoginIn extends Component {
@@ -32,44 +33,40 @@ class LoginIn extends Component {
     }
 
     AppData=()=>{
-        // fetch(backendUrl+"user/login/post/",{
-        //     method:"post",
-        //     mode:"cors",
-        //     body:JSON.stringify(this.state),
-        //     headers:{
-        //         'content-type': 'application/json'
-        //     },
-        //     credentials: 'include',
-        // })
-        //     .then(res => res.json())
-        //     .then((result)=>{
-        //         this.setState({
-        //             isLogin:result.isSuccess,
-        //             type:result.group,
-        //         })
-        //         alert(result.message)
-        //         if(result.isSuccess){
-        //             //alert(result.session_id
-        //             setCookie("sessionid",result.session_id)
-        //         }
+        fetch(backendUrl+"user/login/post/",{
+            method:"post",
+            mode:"cors",
+            body:JSON.stringify(this.state),
+            headers:{
+                'content-type': 'application/json'
+            },
+            credentials: 'include',
+        })
+            .then(res => res.json())
+            .then((result)=>{
+                this.setState({
+                    isLogin:result.isSuccess,
+                    type:result.group,
+                })
+                alert(result.message)
+                if(result.isSuccess){
+                    //alert(result.session_id
+                    setCookie("sessionid",result.session_id)
+                }
 
 
-        //     },
-        // (error)=>{
-        //     console.log(error);
-        // })
+            },
+        (error)=>{
+            console.log(error);
+        })
         
-        if(this.state.type === "common"&&this.state.isLogin){
+        if(this.state.type === "student"&&this.state.isLogin){
             this.setState({
                 flag:3,
             })
-        }else if(this.state.type === "admin"&&this.state.isLogin){
+        }else if(this.state.type === "teacher"&&this.state.isLogin){
             this.setState({
-                flag:4,
-            })
-        }else if(this.state.type === "superAdmin"&&this.state.isLogin){
-            this.setState({
-                flag:5,
+                
             })
         }else{
             alert("用户名和密码错误!");
