@@ -14,7 +14,6 @@ class Comment extends Component {
         this.Info = this.Info.bind(this);
         this.Change = this.Change.bind(this);
         this.Comment = this.Comment.bind(this);
-        this.Application = this.Application.bind(this);
     }
 
     Info=()=>{
@@ -33,20 +32,13 @@ class Comment extends Component {
         
     }
 
-    Application=()=>{
-        this.setState({
-            flag:4,
-        })
-    }
-
     render() {
         if(this.state.flag === 3){
             return (
                 <div>
                     <Title></Title>
-                    <UserSelect Info = {this.Info} Change = {this.Change} Comment = {this.Comment} Application = {this.Application}></UserSelect>
+                    <UserSelect Info = {this.Info} Change = {this.Change} Comment = {this.Comment} ></UserSelect>
                     <div className = "Comment">
-                        123
                     </div>
                 </div>
             );
@@ -54,8 +46,6 @@ class Comment extends Component {
             return <Redirect to = {{pathname:'/User'}} />
         }else if(this.state.flag === 2){
             return <Redirect to = {{pathname:'/User/Change'}} />
-        }else if(this.state.flag === 4){
-            return <Redirect to = {{pathname:'/User/Application'}} />
         }
         
     }

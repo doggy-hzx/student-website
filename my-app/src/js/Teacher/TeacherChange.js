@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route ,Redirect } from 'react-router-dom';
 import { Button,Form,Input } from 'antd';
-import Title from './Title';
-import UserSelect from './UserSelect';
-import '../asserts/css/Change.css'
+import Title from '../Title';
+import TeacherSelect from './TeacherSelect';
+import '../../asserts/css/Change.css'
 
 class Change extends Component {
     constructor(props) {
@@ -13,11 +13,12 @@ class Change extends Component {
             name:"",
             email:"",
             phone:"",
+            password:"",
             token:"",
         };
         this.Info = this.Info.bind(this);
         this.Change = this.Change.bind(this);
-        this.Comment = this.Comment.bind(this);
+        this.Class = this.Class.bind(this);
     }
 
     componentDidMount(){
@@ -62,12 +63,19 @@ class Change extends Component {
             email:e.target.value,
         })
     }
-
+    
     GetPhone=(e)=>{
         this.setState({
             phone:e.target.value,
         })
     }
+
+    GetPassword=(e)=>{
+        this.setState({
+            password:e.target.value,
+        })
+    }
+    
 
     Submit=()=>{
         var flag = 0;
@@ -120,20 +128,11 @@ class Change extends Component {
     }
 
     Change=()=>{
-        this.setState({
-            flag:2,
-        })
     }
 
-    Comment=()=>{
+    Class=()=>{
         this.setState({
-            flag:3,
-        })
-    }
-
-    ChangePassword=()=>{
-        this.setState({
-            flag:5,
+            flag:4,
         })
     }
 
@@ -142,28 +141,24 @@ class Change extends Component {
             return (
                 <div>
                     <Title></Title>
-                    <UserSelect Info = {this.Info} Change = {this.Change} Comment = {this.Comment} ></UserSelect>
+                    <TeacherSelect Info = {this.Info} Change = {this.Change} Class = {this.Class}></TeacherSelect>
                     <div className = "Change">
                         <form>
                             <Input type = "text" placeholder = {this.state.name} ref = "name" onChange = {(e)=>this.GetUsername(e)}></Input>
                             <Input type = "text" placeholder = {this.state.email} ref = "email" onChange = {(e)=>this.GetEmail(e)}></Input>
                             <Input type = "text" placeholder = {this.state.phone} ref = "phone" onChange = {(e)=>this.GetPhone(e)}></Input>
+                            <Input type = "text" placeholder = {this.state.phone} ref = "password" onChange = {(e)=>this.GetPassword(e)}></Input>
                         </form>
-                        <Button type = "primary" onClick = {this.ChangePassword}>
-                            修改密码
-                        </Button>
                         <Button type = "primary" onClick = {this.Submit}>
                             提交
                         </Button>
                     </div>
                 </div>
             );
-        }else if(this.state.flag === 3){
-            return <Redirect to = {{pathname:'/User/Comment'}} />
+        }else if(this.state.flag === 4){
+            return <Redirect to = {{pathname:'/TeacherClass'}} />
         }else if(this.state.flag === 1){
-            return <Redirect to = {{pathname:'/User'}} />
-        }else if(this.state.flag === 5){
-            return <Redirect to = {{pathname:'/User/Change/ChangePassword'}} />
+            return <Redirect to = {{pathname:'/Teacher'}} />
         }
     }
 }

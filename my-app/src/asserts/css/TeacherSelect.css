@@ -1,0 +1,19 @@
+.TeacherSelect{
+    width: 10%;
+    margin-top: 5%;
+    float: left;
+}
+
+.TeacherSelect button{
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.TeacherSelect button:hover{
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+}
