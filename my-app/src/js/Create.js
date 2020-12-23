@@ -86,19 +86,6 @@ class Create extends Component {
                 console.log(error);
             })
 
-            fetch(backendUrl + "user/register/post/",{
-                method:"post",
-                body:JSON.stringify(this.state),
-                credentials: 'include',
-            })
-                .then(res => res.json())
-                .then((result)=>{
-                    
-                },
-            (error)=>{
-                console.log(error);
-            })
-
             alert("用户注册成功");
             this.setState({
                 flag:0,
@@ -106,43 +93,6 @@ class Create extends Component {
         }
 
     }
-
-    /*OperatorAppData=()=>{
-
-        if(this.refs.code.value != this.refs.if_same_code.value){
-            alert("确认密码错误，请重新输入");
-        }else{
-
-            this.setState({
-                username:this.refs.name.value,
-                password:this.refs.code.value,
-                phone:this.refs.phone.value,
-                email:this.refs.address.value,
-                citizen_id:this.refs.ID.value,
-                user_type:1,
-            })
-    
-            fetch("register/post/",{
-                method:"post",
-                body:JSON.stringify(this.state),
-                headers:{
-                    'content-type': 'application/json'
-                }
-            })
-                .then(res => res.json())
-                .then((result)=>{
-                    
-                },
-            (error)=>{
-                console.log(error);
-            })
-
-            alert("管理员注册成功");
-            this.setState({
-                flag:0,
-            })
-        }
-    }*/
 
     Back=()=>{
         this.setState({

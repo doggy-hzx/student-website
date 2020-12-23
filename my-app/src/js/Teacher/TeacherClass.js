@@ -54,6 +54,10 @@ class TeacherClass extends Component {
 
     Class=()=>{
 	}
+
+	Delete=(e)=>{
+		const arrs = this.state.class;
+	}
 	
     render() {
 		if(this.state.flag === 1){
@@ -79,6 +83,7 @@ class TeacherClass extends Component {
 											title = {<a>{item.classname}</a>}
 											onClick = {()=>this.update(item)}
 										></List.Item.Meta>
+										<Button onClick = {(e)=>this.Delete(e)}>删除课程</Button>
 									</List.Item>
 								)
 							}
