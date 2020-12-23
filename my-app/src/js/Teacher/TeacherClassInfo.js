@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { List, Input, Button, Divider } from 'antd';
 import '../../asserts/css/CreateClass.css'
 import Title from '../Title'
+import { backendUrl, getCookie, setCookie } from '../Common';
 
 class ClassInfo extends Component {
     constructor(props) {
@@ -17,6 +18,28 @@ class ClassInfo extends Component {
             tclassinfo:"",
             tclassteacher:"",
         };
+    }
+
+    componentDidMount() {
+
+        fetch(backendUrl + "user/profile/", {
+            method: "get",
+            mode: "cors",
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+                this.setState({
+                    classname: result.classname,
+                    classtime: result.classtime,
+                    classinfo: result.classinfo,
+                    classteacher: result.classteacher,
+                })
+            },
+                (error) => {
+                    console.log(error);
+                })
+
     }
 
     setClassname=(e)=>{

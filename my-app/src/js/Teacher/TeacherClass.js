@@ -4,6 +4,7 @@ import '../../asserts/css/Teacher.css'
 import { List, Avatar, Button } from 'antd';
 import Title from '../Title';
 import TeacherSelect from './TeacherSelect'
+import { backendUrl, getCookie, setCookie } from '../Common';
 
 var classupdate = {
 	classname:'class1'
@@ -23,7 +24,20 @@ class TeacherClass extends Component {
 
 	componentDidMount(){
 
-
+        fetch(backendUrl + "user/profile/", {
+            method: "get",
+            mode: "cors",
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+                this.setState({
+                    class:result.class,
+                })
+            },
+                (error) => {
+                    console.log(error);
+                })
 
 	}
 
