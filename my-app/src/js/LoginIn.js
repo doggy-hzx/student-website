@@ -33,44 +33,37 @@ class LoginIn extends Component {
     }
 
     AppData=()=>{
-        fetch(backendUrl+"user/login/post/",{
+        fetch(backendUrl+"login/",{
             method:"post",
             mode:"cors",
             body:JSON.stringify(this.state),
-            headers:{
-                'content-type': 'application/json'
-            },
             credentials: 'include',
         })
             .then(res => res.json())
             .then((result)=>{
                 this.setState({
                     isLogin:result.isSuccess,
-                    type:result.group,
+                    type:result.type,
                 })
                 alert(result.message)
-                if(result.isSuccess){
-                    //alert(result.session_id
-                    setCookie("sessionid",result.session_id)
-                }
 
+                if (this.state.type === "student" && this.state.isLogin) {
+                    this.setState({
+                        flag: 3,
+                    })
+                } else if (this.state.type === "teacher" && this.state.isLogin) {
+                    this.setState({
+                    })
+                } else {
+                    alert("用户名和密码错误!");
+                }
 
             },
         (error)=>{
             console.log(error);
         })
         
-        if(this.state.type === "student"&&this.state.isLogin){
-            this.setState({
-                flag:3,
-            })
-        }else if(this.state.type === "teacher"&&this.state.isLogin){
-            this.setState({
-                
-            })
-        }else{
-            alert("用户名和密码错误!");
-        }
+        
     }
 
     Back=()=>{

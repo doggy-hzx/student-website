@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route ,Redirect } from 'react-router-dom';
-import { Input , Button } from 'antd';
-import { backendUrl } from './Common'
+import { Input, Button, Radio } from 'antd';
+import { backendUrl, getCookie } from './Common'
 import '../asserts/css/App.css';
 import '../asserts/css/Logo.css';
 import '../asserts/css/Info.css';
 import Title from './Title'
-
 class Create extends Component {
     constructor(props) {
         super(props);
@@ -18,8 +17,9 @@ class Create extends Component {
             phone:"",
             email:"",
             citizen_id:"",
-            real_name:"",
-            token:"",
+            real_name: "",
+            type:"",
+            token: getCookie('csrftoken'),
         };
     }
 
@@ -71,24 +71,30 @@ class Create extends Component {
             alert("邮箱地址不合法!");
         }else if(this.state.phone.length!=11){
             alert("电话号码不合法!");
-        }else if(this.state.citizen_id.length!=18){
+        }else if(this.state.citizen_id.length!=10){
             alert("学号不合法!");
         }else{
             
-            fetch(backendUrl+"user/profile/changepass/set_new/",{
-                mode:"cors",
+            fetch(backendUrl + "register/", {
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                method :"post",
+                mode: "cors",
+                body: JSON.stringify(this.state),
                 credentials: 'include',
             })
                 .then(res => res.json())
-                .then((tokenresult)=>{
+                .then((result) => {
+                    if (result.isSuccess) {
+                        alert("用户注册成功");
+                        this.setState({
+                            flag: 0,
+                        })
+                    }
                 },
             (error)=>{
                 console.log(error);
-            })
-
-            alert("用户注册成功");
-            this.setState({
-                flag:0,
             })
         }
 
@@ -104,6 +110,12 @@ class Create extends Component {
         this.setState({
             change:"text",
             string:"隐藏密码"
+        })
+    }
+
+    Choose = (e) => {
+        this.setState({
+            type: e.target.value,
         })
     }
 
@@ -139,6 +151,10 @@ class Create extends Component {
                                     </div>
                                 </div>
                             </form>
+                            <Radio.Group onChange={(e)=>this.Choose(e)}>
+                                <Radio value={"teacher"} option = "button">Teacher</Radio>
+                                <Radio value={"student"} option = "button">Student</Radio>
+                            </Radio.Group>
                             <div>
                                 <Button onClick = {this.UserAppData}>
                                     用户注册
