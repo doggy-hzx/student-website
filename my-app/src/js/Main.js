@@ -4,12 +4,17 @@ import { Button, Divider } from 'antd'
 import '../asserts/css/Header.css';
 import ZjuLogo from '../asserts/image/timgXFIKOJKO.png';
 import { backendUrl, getCookie } from './Common'
+import { List } from 'antd/lib/form/Form';
 
 class Main extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
             flag: 0,
+            class:[
+                {classname:"class1"},
+                {classname:"class2"},
+            ]
 		};
 	}
 
@@ -45,9 +50,8 @@ class Main extends Component {
 
     User=()=>{
         fetch(backendUrl+"user_info/",{
-            method:"post",
+            method:"get",
             mode:"cors",
-            body:JSON.stringify(this.state),
             credentials: 'include',
         })
             .then(res => res.json())
@@ -93,6 +97,17 @@ class Main extends Component {
                             <Button onClick={this.Create}>注册</Button>
                         </div>
                     </body>
+
+                    <List
+
+                        
+                    
+                    >
+                        <List.Meta>
+
+                        </List.Meta>
+                    </List>
+
                 </div>
             );
         } else if (this.state.flag === 1) {
