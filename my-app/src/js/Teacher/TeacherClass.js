@@ -7,7 +7,7 @@ import TeacherSelect from './TeacherSelect'
 import { backendUrl, getCookie, setCookie } from '../Common';
 
 var classupdate = {
-	classname:'class1'
+	classname:'1'
 }
 
 class TeacherClass extends Component {

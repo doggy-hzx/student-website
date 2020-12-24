@@ -4,7 +4,6 @@ import { Button } from 'antd'
 import '../asserts/css/Header.css';
 import ZjuLogo from '../asserts/image/timgXFIKOJKO.png';
 import { backendUrl } from './Common'
-import $ from 'jquery'
 
 class Main extends Component {
 	constructor(props) {
@@ -16,7 +15,7 @@ class Main extends Component {
 
     componentDidMount() {
 
-        $.ajaxSetup({ xhrFields: { withCredentials: true }, crossDomain: true});
+        /*$.ajaxSetup({ xhrFields: { withCredentials: true }, crossDomain: true});
         $.post(backendUrl + "check_session/", JSON.stringify(this.state), function (result) {
 
             if (result.isSuccess) {
@@ -25,7 +24,22 @@ class Main extends Component {
                 })
             }
 
-        }.bind(this));
+        }.bind(this));*/
+        
+        fetch(backendUrl+"login/",{
+            method:"post",
+            mode:"cors",
+            body:JSON.stringify(this.state),
+            credentials: 'include', 
+        })
+            .then(res => res.json())
+            .then((result)=>{
+                if(result.isLogin){
+                    this.setState({
+                        flag:3,
+                    })
+                }
+        })
     }
 
 	SignIn=()=>{

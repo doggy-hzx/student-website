@@ -3,15 +3,28 @@ import { List, Input, Button, Divider } from 'antd';
 import '../../asserts/css/CreateClass.css'
 import Title from '../Title'
 import { backendUrl, getCookie, setCookie } from '../Common';
+import { Redirect } from 'react-router-dom';
+
+var toHomework = {
+    homeworkname:'',
+}
 
 class ClassInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            classname:"123",
+
+            flag:0,
+
+            classname:"",
             classtime:"",
             classinfo:"",
             classteacher:"",
+            studentnumber:"",
+            homework:[
+                {homeworkname:'homework1'},
+                {homeworkname:'homework2'},
+            ],
             
             tclassname:"",
             tclasstime:"",
@@ -21,6 +34,10 @@ class ClassInfo extends Component {
     }
 
     componentDidMount() {
+
+        this.setState({
+            classname:this.props.location.state.classname,
+        })
 
         fetch(backendUrl + "user/profile/", {
             method: "get",
@@ -34,6 +51,7 @@ class ClassInfo extends Component {
                     classtime: result.classtime,
                     classinfo: result.classinfo,
                     classteacher: result.classteacher,
+                    studentnumber:result.studentnumber,
                 })
             },
                 (error) => {
@@ -66,57 +84,115 @@ class ClassInfo extends Component {
         })
     }
 
-    render() {
-        return (
-            <div>
-                <Title></Title>
-                {this.props.location.state.classname}
-
-                <div className = "CreateClass">
-                    <List.Item>
-                        <p>
-                            课程名称:{this.state.classname}
-                        </p>
-                        <div>
-                            <Input onChange = {(e)=>this.setClassname(e)} style = {{width:100}}></Input>
-                            <Button>保存更改</Button>
-                        </div>
-                    </List.Item>
-                    <Divider></Divider>
-                    <List.Item>
-                        <p>
-                            上课时间:{this.state.classtime}
-                        </p>
-                        <div>
-                            <Input onChange = {(e)=>this.setClasstime(e)} style = {{width:100}}></Input>
-                            <Button>保存更改</Button>
-                        </div>
-                    </List.Item>
-                    <Divider></Divider>
-                    <List.Item>
-                        <p>
-                            任课老师:{this.state.classteacher}
-                        </p>
-                        <div>
-                            <Input onChange = {(e)=>this.setClassinfo(e)} style = {{width:100}}></Input>
-                            <Button>保存更改</Button>
-                        </div>
-                    </List.Item>
-                    <Divider></Divider>
-                    <List.Item>
-                        <p>
-                            课程介绍:{this.state.classinfo}
-                        </p>
-                        <div>
-                            <Input onChange = {(e)=>this.setClassteacher(e)} style = {{width:100}}></Input>
-                            <Button>保存更改</Button>
-                        </div>
-                    </List.Item>
-                </div>
-
-            </div>
-        );
+    setToHomework=(e)=>{
+        toHomework.homeworkname = e.homeworkname;
+        this.setState({
+            flag:1,
+        })
     }
+
+    render() {
+        if(this.state.flag === 0){
+            return (
+                <div>
+                    <Title></Title>
+
+                    <div className = "CreateClass">
+                        <List
+                        >
+                        <List.Item>
+                            <p>
+                                课程名称:
+                                <Divider type = "vertical"></Divider>
+                                {this.state.classname}
+                            </p>
+                            <div>
+                                <Input onChange = {(e)=>this.setClassname(e)} style = {{width:100}}></Input>
+                                <Divider type = "vertical"></Divider>
+                                <Button>保存更改</Button>
+                            </div>
+                        </List.Item>
+                        <Divider></Divider>
+                        <List.Item>
+                            <p>
+                                上课时间:
+                                <Divider type = "vertical"></Divider>
+                                {this.state.classtime}
+                            </p>
+                            <div>
+                                <Input onChange = {(e)=>this.setClasstime(e)} style = {{width:100}}></Input>
+                                <Divider type = "vertical"></Divider>
+                                <Button>保存更改</Button>
+                            </div>
+                        </List.Item>
+                        <Divider></Divider>
+                        <List.Item>
+                            <p>
+                                任课老师:
+                                <Divider type = "vertical"></Divider>
+                                {this.state.classteacher}
+                            </p>
+                            <div>
+                                <Input onChange = {(e)=>this.setClassinfo(e)} style = {{width:100}}></Input>
+                                <Divider type = "vertical"></Divider>
+                                <Button>保存更改</Button>
+                            </div>
+                        </List.Item>
+                        <Divider></Divider>
+                        <List.Item>
+                            <p>
+                                课程介绍:
+                                <Divider type = "vertical"></Divider>
+                                {this.state.classinfo}
+                            </p>
+                            <div>
+                                <Input onChange = {(e)=>this.setClassteacher(e)} style = {{width:100}}></Input>
+                                <Divider type = "vertical"></Divider>
+                                <Button>保存更改</Button>
+                            </div>
+                        </List.Item>
+                        <Divider></Divider>
+                        <List.Item>
+                            <p>
+                                选课人数:
+                                <Divider type = "vertical"></Divider>
+                                {this.state.studentnumber}
+                            </p>
+                        </List.Item>
+                        <Divider></Divider>
+
+                        <List
+                            bordered
+                            dataSource={this.state.homework}
+                            renderItem={item => 
+                            
+                                <List.Item>
+                                    <List.Item.Meta
+                                        title = {<a>{item.homeworkname}</a>}
+                                        onClick = {()=>this.setToHomework(item)}
+                                    >
+                                    </List.Item.Meta>
+                                </List.Item>
+                            }
+                        >
+                        </List>
+                        </List>
+                    </div>
+
+                </div>
+            );
+        }else if(this.state.flag === 1){
+            return(
+                <Redirect to = {
+                    {
+                        pathname:'/TeacherHomework',
+                        state:toHomework,
+                    }
+                }/>
+            )
+        }
+    }
+
 }
 
 export default ClassInfo;

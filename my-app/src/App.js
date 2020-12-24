@@ -13,6 +13,8 @@ import TeacherClass from './js/Teacher/TeacherClass';
 import TeacherChange from './js/Teacher/TeacherChange';
 import TeacherClassInfo from './js/Teacher/TeacherClassInfo';
 import TeacherCreateClass from './js/Teacher/TeacherCreateClass';
+import TeacherHomework from './js/Teacher/TeacherHomework';
+import TeacherCheck from './js/Teacher/TeacherCheck';
 
 
 class App extends Component {
@@ -39,6 +41,8 @@ class App extends Component {
                     <Route exact path = "/TeacherChange" component = {TeacherChange}></Route>
                     <Route exact path = "/TeacherClassInfo" component = {TeacherClassInfo}></Route>
                     <Route exact path = "/TeacherCreateClass" component = {TeacherCreateClass}></Route>
+                    <Route exact path = "/TeacherHomework" component = {TeacherHomework}></Route>
+                    <Route exact path = "/TeacherCheck" component = {TeacherCheck}></Route>
 
                 </div>
             </Router>
