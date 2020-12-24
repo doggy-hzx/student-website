@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import { Button, Divider } from 'antd'
+import { Button, Divider,List,Card } from 'antd';
 import '../asserts/css/Header.css';
+import '../asserts/css/Main.css';
 import ZjuLogo from '../asserts/image/timgXFIKOJKO.png';
-import { backendUrl, getCookie } from './Common'
-import { List } from 'antd/lib/form/Form';
+import { backendUrl, getCookie } from './Common';
+
+const { Meta } = Card;
 
 class Main extends Component {
 	constructor(props) {
@@ -12,8 +14,6 @@ class Main extends Component {
 		this.state = {
             flag: 0,
             class:[
-                {classname:"class1"},
-                {classname:"class2"},
             ]
 		};
 	}
@@ -34,6 +34,8 @@ class Main extends Component {
                     })
                 }
         })
+
+
     }
 
 	SignIn=()=>{
@@ -98,15 +100,24 @@ class Main extends Component {
                         </div>
                     </body>
 
-                    <List
+                    <Divider></Divider>
 
-                        
-                    
-                    >
-                        <List.Meta>
-
-                        </List.Meta>
-                    </List>
+                    <div className = "Main">
+                        <List
+                            dataSource={this.state.class}
+                            grid={{ gutter: 100, column: 5 }}
+                            renderItem={item=>
+                                <List.Item>
+                                    <Card
+                                        hoverable
+                                    >
+                                        <Meta title={item.classname} description={item.classinfo}></Meta>
+                                    </Card>
+                                </List.Item>
+                            }
+                        >
+                        </List>
+                    </div>
 
                 </div>
             );

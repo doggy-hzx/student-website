@@ -26,11 +26,6 @@ class ClassInfo extends Component {
                 {homeworkname:'homework1'},
                 {homeworkname:'homework2'},
             ],
-            
-            tclassname:"",
-            tclasstime:"",
-            tclassinfo:"",
-            tclassteacher:"",
         };
     }
 
@@ -107,11 +102,6 @@ class ClassInfo extends Component {
                                 <Divider type = "vertical"></Divider>
                                 {this.state.classname}
                             </p>
-                            <div>
-                                <Input onChange = {(e)=>this.setClassname(e)} style = {{width:100}}></Input>
-                                <Divider type = "vertical"></Divider>
-                                <Button>保存更改</Button>
-                            </div>
                         </List.Item>
                         <Divider></Divider>
                         <List.Item>
@@ -120,11 +110,6 @@ class ClassInfo extends Component {
                                 <Divider type = "vertical"></Divider>
                                 {this.state.classtime}
                             </p>
-                            <div>
-                                <Input onChange = {(e)=>this.setClasstime(e)} style = {{width:100}}></Input>
-                                <Divider type = "vertical"></Divider>
-                                <Button>保存更改</Button>
-                            </div>
                         </List.Item>
                         <Divider></Divider>
                         <List.Item>
@@ -133,11 +118,6 @@ class ClassInfo extends Component {
                                 <Divider type = "vertical"></Divider>
                                 {this.state.classteacher}
                             </p>
-                            <div>
-                                <Input onChange = {(e)=>this.setClassinfo(e)} style = {{width:100}}></Input>
-                                <Divider type = "vertical"></Divider>
-                                <Button>保存更改</Button>
-                            </div>
                         </List.Item>
                         <Divider></Divider>
                         <List.Item>
@@ -146,11 +126,6 @@ class ClassInfo extends Component {
                                 <Divider type = "vertical"></Divider>
                                 {this.state.classinfo}
                             </p>
-                            <div>
-                                <Input onChange = {(e)=>this.setClassteacher(e)} style = {{width:100}}></Input>
-                                <Divider type = "vertical"></Divider>
-                                <Button>保存更改</Button>
-                            </div>
                         </List.Item>
                         <Divider></Divider>
                         <List.Item>
@@ -186,7 +161,7 @@ class ClassInfo extends Component {
             return(
                 <Redirect to = {
                     {
-                        pathname:'/TeacherHomework',
+                        pathname:'/StudentHomework',
                         state:toHomework,
                     }
                 }/>

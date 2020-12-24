@@ -19,7 +19,7 @@ import TeacherCheck from './js/Teacher/TeacherCheck';
 import Student from './js/Student/Student';
 import StudentClass from './js/Student/StudentClass';
 import StudentChange from './js/Student/StudentChange';
-import StudentClassInfo from './js/Teacher/TeacherClassInfo';
+import StudentClassInfo from './js/Student/StudentClassInfo';
 import StudentCreateClass from './js/Teacher/TeacherCreateClass';
 import StudentHomework from './js/Teacher/TeacherHomework';
 import StudentCheck from './js/Teacher/TeacherCheck';
