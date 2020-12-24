@@ -10,7 +10,7 @@ export function getCookie(key) {
                 return c.substring(name.length, c.length);
             }
         }
-        return "123";
+        return "";
     }
 
     // 设置cookie,默认是30天

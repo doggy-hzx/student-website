@@ -12,7 +12,7 @@ class ClassInfo extends Component {
             classtime:"",
             classinfo:"",
             classteacher:"",
-
+            
             tclassname:"",
             tclasstime:"",
             tclassinfo:"",

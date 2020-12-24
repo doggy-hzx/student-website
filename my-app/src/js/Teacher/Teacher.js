@@ -22,7 +22,7 @@ class User extends Component {
     }
 
     componentDidMount(){
-        fetch(backendUrl+"user/profile/",{
+        /*fetch(backendUrl+"user/profile/",{
             method:"get",
             mode:"cors",
             credentials:"include",
@@ -38,7 +38,7 @@ class User extends Component {
             },
             (error)=>{
                 console.log(error);
-            })
+            })*/
     }
     
     Info=()=>{

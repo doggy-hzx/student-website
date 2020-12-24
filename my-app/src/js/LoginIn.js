@@ -7,6 +7,7 @@ import '../asserts/css/Logo.css';
 import '../asserts/css/Info.css';
 import { backendUrl, getCookie, setCookie} from './Common';
 import Title from './Title';
+import $ from 'jquery'
 
 class LoginIn extends Component {
     constructor(props) {
@@ -33,37 +34,38 @@ class LoginIn extends Component {
     }
 
     AppData=()=>{
-        fetch(backendUrl+"login/",{
+        /*fetch(backendUrl+"login/",{
             method:"post",
             mode:"cors",
             body:JSON.stringify(this.state),
-            credentials: 'include',
+            credentials: 'include', 
         })
             .then(res => res.json())
             .then((result)=>{
                 this.setState({
                     isLogin:result.isSuccess,
                     type:result.type,
+                })*/
+        $.ajaxSetup({ xhrFields: { withCredentials: true }, crossDomain: true});
+        $.post(backendUrl+"login/",JSON.stringify(this.state), function (result) {
+            this.setState({
+                isLogin: result.isSuccess,
+                type: result.type,
+            });
+
+            if (this.state.type === "student" && this.state.isLogin) {
+                this.setState({
+                    flag: 3,
                 })
-                alert(result.message)
+            } else if (this.state.type === "teacher" && this.state.isLogin) {
+                this.setState({
+                    flag: 4,
+                })
+            } else {
+                alert("用户名和密码错误!");
+            }
 
-                if (this.state.type === "student" && this.state.isLogin) {
-                    this.setState({
-                        flag: 3,
-                    })
-                } else if (this.state.type === "teacher" && this.state.isLogin) {
-                    this.setState({
-                        flag: 4,
-                    })
-                } else {
-                    alert("用户名和密码错误!");
-                }
-
-            },
-        (error)=>{
-            console.log(error);
-        })
-        
+        }.bind(this));
         
     }
 
