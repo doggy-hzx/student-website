@@ -26,7 +26,7 @@ class Main extends Component {
 
         }.bind(this));*/
         
-        fetch(backendUrl+"login/",{
+        fetch(backendUrl+"check_session/",{
             method:"post",
             mode:"cors",
             body:JSON.stringify(this.state),
