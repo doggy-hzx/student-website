@@ -38,7 +38,7 @@ class TeacherCheck extends Component {
                     <div className = "CreateClass">
                         <List>
 
-                        <List.Item>
+                            <List.Item>
                                 <p>
                                     学生姓名:
                                     <Divider type = "vertical"></Divider>

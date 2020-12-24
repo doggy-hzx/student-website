@@ -16,6 +16,14 @@ import TeacherCreateClass from './js/Teacher/TeacherCreateClass';
 import TeacherHomework from './js/Teacher/TeacherHomework';
 import TeacherCheck from './js/Teacher/TeacherCheck';
 
+import Student from './js/Student/Student';
+import StudentClass from './js/Student/StudentClass';
+import StudentChange from './js/Student/StudentChange';
+import StudentClassInfo from './js/Teacher/TeacherClassInfo';
+import StudentCreateClass from './js/Teacher/TeacherCreateClass';
+import StudentHomework from './js/Teacher/TeacherHomework';
+import StudentCheck from './js/Teacher/TeacherCheck';
+import StudentChoose from './js/Student/StudentChoose';
 
 class App extends Component {
 
@@ -43,6 +51,16 @@ class App extends Component {
                     <Route exact path = "/TeacherCreateClass" component = {TeacherCreateClass}></Route>
                     <Route exact path = "/TeacherHomework" component = {TeacherHomework}></Route>
                     <Route exact path = "/TeacherCheck" component = {TeacherCheck}></Route>
+
+                    {/*学生的route*/}
+                    <Route exact path = "/Student" component = {Student}></Route>
+                    <Route exact path = "/StudentClass" component = {StudentClass}></Route>
+                    <Route exact path = "/StudentChange" component = {StudentChange}></Route>
+                    <Route exact path = "/StudentClassInfo" component = {StudentClassInfo}></Route>
+                    <Route exact path = "/StudentCreateClass" component = {StudentCreateClass}></Route>
+                    <Route exact path = "/StudentHomework" component = {StudentHomework}></Route>
+                    <Route exact path = "/StudentCheck" component = {StudentCheck}></Route>
+                    <Route exact path = "/StudentChoose" component = {StudentChoose}></Route>
 
                 </div>
             </Router>

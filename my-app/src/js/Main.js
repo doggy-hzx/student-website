@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { Button } from 'antd'
 import '../asserts/css/Header.css';
 import ZjuLogo from '../asserts/image/timgXFIKOJKO.png';
-import { backendUrl } from './Common'
+import { backendUrl, getCookie } from './Common'
 
 class Main extends Component {
 	constructor(props) {
@@ -30,7 +30,10 @@ class Main extends Component {
             method:"post",
             mode:"cors",
             body:JSON.stringify(this.state),
-            credentials: 'include', 
+            credentials: 'include',
+            headers:{
+                sessionid:getCookie("sessionid"),
+            }
         })
             .then(res => res.json())
             .then((result)=>{
