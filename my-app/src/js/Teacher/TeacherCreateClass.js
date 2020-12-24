@@ -45,7 +45,7 @@ class TeacherCreateClass extends Component {
 
     onFinish=()=>{
         
-        fetch(backendUrl+"check_session/",{
+        fetch(backendUrl+"new_course/",{
             method:"post",
             mode:"cors",
             body:JSON.stringify(this.state),
