@@ -23,7 +23,7 @@ class Main extends Component {
         })
             .then(res => res.json())
             .then((result)=>{
-                if(result.isLogin){
+                if(result.isSuccess){
                     this.setState({
                         flag:3,
                     })
