@@ -19,7 +19,6 @@ class Create extends Component {
             citizen_id:"",
             real_name: "",
             type:"",
-            token: getCookie('csrftoken'),
         };
     }
 

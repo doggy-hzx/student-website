@@ -15,10 +15,7 @@ class StudentChoose extends Component {
 		super(props);
 		this.state = {
 			flag:4,
-			class:[
-				{classname:'class1'},
-				{classname:'class2'},
-			]
+			class:[]
 		};
 	}
 

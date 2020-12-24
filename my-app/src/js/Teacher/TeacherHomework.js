@@ -17,10 +17,7 @@ class TeacherHomework extends Component {
             homeworkname:"",
             deadline:"",
             homeworkinfo:"",
-            submitstudent:[
-                {stuname:"student1"},
-                {stuname:"student2"},
-            ],
+            submitstudent:[],
 
             thomeworkname:"",
             tdeadline:"",

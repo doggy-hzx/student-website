@@ -4,10 +4,6 @@ import './asserts/css/App.css'
 import LoginIn from './js/LoginIn';
 import Main from './js/Main';
 import Create from './js/Create';
-import User from './js/User';
-import Change from './js/Change';
-import Comment from './js/Comment';
-import ChangePassword from './js/ChangePassword';
 import Teacher from './js/Teacher/Teacher';
 import TeacherClass from './js/Teacher/TeacherClass';
 import TeacherChange from './js/Teacher/TeacherChange';
@@ -20,9 +16,7 @@ import Student from './js/Student/Student';
 import StudentClass from './js/Student/StudentClass';
 import StudentChange from './js/Student/StudentChange';
 import StudentClassInfo from './js/Student/StudentClassInfo';
-import StudentCreateClass from './js/Teacher/TeacherCreateClass';
-import StudentHomework from './js/Teacher/TeacherHomework';
-import StudentCheck from './js/Teacher/TeacherCheck';
+import StudentHomework from './js/Student/StudentHomework';
 import StudentChoose from './js/Student/StudentChoose';
 
 class App extends Component {
@@ -38,10 +32,6 @@ class App extends Component {
                     <Route exact path = "/" component = {Main}></Route>
                     <Route exact path = "/LoginIn" component = {LoginIn}></Route>
                     <Route exact path = "/Create" component = {Create}></Route>
-                    <Route exact path = "/User" component = {User}></Route>
-                    <Route exact path = "/User/Comment" component = {Comment}></Route>
-                    <Route exact path = "/User/Change" component = {Change}></Route>
-                    <Route exact path = "/User/Change/ChangePassword" component = {ChangePassword}></Route>
 
                     {/* 教师的route */}
                     <Route exact path = "/Teacher" component = {Teacher}></Route>
@@ -57,9 +47,7 @@ class App extends Component {
                     <Route exact path = "/StudentClass" component = {StudentClass}></Route>
                     <Route exact path = "/StudentChange" component = {StudentChange}></Route>
                     <Route exact path = "/StudentClassInfo" component = {StudentClassInfo}></Route>
-                    <Route exact path = "/StudentCreateClass" component = {StudentCreateClass}></Route>
                     <Route exact path = "/StudentHomework" component = {StudentHomework}></Route>
-                    <Route exact path = "/StudentCheck" component = {StudentCheck}></Route>
                     <Route exact path = "/StudentChoose" component = {StudentChoose}></Route>
 
                 </div>

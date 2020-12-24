@@ -13,8 +13,7 @@ class Main extends Component {
 		super(props);
 		this.state = {
             flag: 0,
-            class:[
-            ]
+            class:[]
 		};
 	}
 

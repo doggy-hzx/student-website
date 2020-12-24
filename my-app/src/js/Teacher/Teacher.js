@@ -12,10 +12,10 @@ class User extends Component {
         super(props);
         this.state = {
             flag:1,
-            username:"用户名",
-            phone:"123456",
-            email:"xxx@xxx.xxx",
-            real_name:"真名",
+            username:"",
+            phone:"",
+            email:"",
+            real_name:"",
         };
         this.Info = this.Info.bind(this);
         this.Change = this.Change.bind(this);
