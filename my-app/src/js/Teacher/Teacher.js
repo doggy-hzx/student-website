@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route ,Redirect } from 'react-router-dom';
+import { List,Button,Divider } from 'antd';
 import '../../asserts/css/Teacher.css'
 import Title from '../Title';
 import TeacherSelect from './TeacherSelect';
@@ -22,7 +23,7 @@ class User extends Component {
     }
 
     componentDidMount(){
-        /*fetch(backendUrl+"user/profile/",{
+        fetch(backendUrl+"user_info/",{
             method:"get",
             mode:"cors",
             credentials:"include",
@@ -38,7 +39,7 @@ class User extends Component {
             },
             (error)=>{
                 console.log(error);
-            })*/
+            })
     }
     
     Info=()=>{
@@ -66,26 +67,36 @@ class User extends Component {
                     <Title></Title>
                     <TeacherSelect Info = {this.Info} Change = {this.Change} Class = {this.Class}></TeacherSelect>
                     <div className = "Teacher">
-                        <div id = "TeacherName">
-                            {this.state.username}
-                        </div>
-                        <div id = "Type">
-                            注册用户
-                        </div>
-                        <div id = "Info">
-                            <a>
-                                <text>电话</text>
-                                <text>{this.state.phone}</text>
-                            </a>
-                            <a>
-                                <text>邮箱</text>
-                                <text>{this.state.email}</text>
-                            </a>
-                            <a>
-                                <text>真实姓名</text>
-                                <text>{this.state.real_name}</text>
-                            </a>
-                        </div>
+                        <List>
+                            <List.Item>
+                                <p>
+                                    用户名:
+                                    <Divider type = "vertical"></Divider>
+                                    {this.state.username}
+                                </p>
+                            </List.Item>
+                            <List.Item>
+                                <p>
+                                    电话号码:
+                                    <Divider type = "vertical"></Divider>
+                                    {this.state.phone}
+                                </p>
+                            </List.Item>
+                            <List.Item>
+                                <p>
+                                    电子邮箱:
+                                    <Divider type = "vertical"></Divider>
+                                    {this.state.email}
+                                </p>
+                            </List.Item>
+                            <List.Item>
+                                <p>
+                                    真实姓名:
+                                    <Divider type = "vertical"></Divider>
+                                    {this.state.real_name}
+                                </p>
+                            </List.Item>
+                        </List>
                     </div>
                 </div>
             );

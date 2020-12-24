@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route ,Redirect } from 'react-router-dom';
 import { Button,Divider,Form,Input } from 'antd';
+import { backendUrl } from '../Common'
 import Title from '../Title';
 import TeacherSelect from './TeacherSelect';
 import '../../asserts/css/Change.css'
@@ -23,33 +24,18 @@ class Change extends Component {
 
     componentDidMount(){
 
-        // fetch(backendUrl+"user/profile/changepass/set_new/",{
-        //     mode:"cors",
-        // credentials: 'include',
-        // })
-        //     .then(res => res.json())
-        //     .then((tokenresult)=>{
-        //     },
-        // (error)=>{
-        //     console.log(error);
-        // })
+        fetch(backendUrl+"user_info/",{
+            method:"get",
+            mode:"cors",
+            credentials:"include",
+        })
+            .then(res => res.json())
+            .then((result)=>{
+            },
+            (error)=>{
+                console.log(error);
+            })
 
-        // fetch(backendUrl+"user/profile/",{
-        //     method:"get",
-        //     mode:"cors",
-        //     credentials:"include",
-        // })
-        //     .then(res => res.json())
-        //     .then((result)=>{
-        //         this.setState({
-        //             name:result.username,
-        //             phone:result.phone,
-        //             email:result.email,
-        //         })
-        //     },
-        //     (error)=>{
-        //         console.log(error);
-        //     })
     }
 
     GetUsername=(e)=>{
@@ -101,23 +87,18 @@ class Change extends Component {
         }
         
         if(flag === 0){
-            // fetch(backendUrl+"user/profile/modify/",{
-            //     method:"post",
-            //     body:JSON.stringify(this.state),
-            //     mode:"cors",
-            //     credentials: 'include',
-            // })
-            //     .then(res => res.json())
-            //     .then((result)=>{
-            //         if(result.isSucess){
-            //             alert("更改成功");
-            //         }else{
-            //             alert("更改失败");
-            //         }
-            //     },
-            // (error)=>{
-            //     console.log(error);
-            // })
+            fetch(backendUrl+"user_info/",{
+                method:"post",
+                mode:"cors",
+                body:this.state,
+                credentials:"include",
+            })
+            .then(res => res.json())
+            .then((result)=>{
+            },
+            (error)=>{
+                console.log(error);
+            })
         }
     }
 

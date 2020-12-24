@@ -89,7 +89,7 @@ class StudentChoose extends Component {
 					<StudentSelect Info = {this.Info} Change = {this.Change} Class = {this.Class} Choose = {this.Choose}></StudentSelect>
 					<div className = "Student">
 						<List
-							header = {<div>已开课程</div>}
+							header = {<div>已选课程</div>}
 							dataSource = {this.state.class}
 
 							renderItem = {
@@ -99,7 +99,6 @@ class StudentChoose extends Component {
 											title = {<a>{item.classname}</a>}
 											onClick = {()=>this.update(item)}
 										></List.Item.Meta>
-										<Button>选择课程</Button>
 									</List.Item>
 								)
 							}
@@ -110,7 +109,7 @@ class StudentChoose extends Component {
 				</div>
 			);
 		}else if(this.state.flag === 6){
-			return <Redirect to = {{pathname:'/StudentClassChoose'}} />
+			return <Redirect to = {{pathname:'/StudentClass'}} />
 		}
 		else if(this.state.flag === 5){
 			return (

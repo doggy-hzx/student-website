@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import { Button } from 'antd'
+import { Button, Divider } from 'antd'
 import '../asserts/css/Header.css';
 import ZjuLogo from '../asserts/image/timgXFIKOJKO.png';
 import { backendUrl, getCookie } from './Common'
@@ -14,26 +14,12 @@ class Main extends Component {
 	}
 
     componentDidMount() {
-
-        /*$.ajaxSetup({ xhrFields: { withCredentials: true }, crossDomain: true});
-        $.post(backendUrl + "check_session/", JSON.stringify(this.state), function (result) {
-
-            if (result.isSuccess) {
-                this.setState({
-                    flag:3,
-                })
-            }
-
-        }.bind(this));*/
         
         fetch(backendUrl+"check_session/",{
             method:"post",
             mode:"cors",
             body:JSON.stringify(this.state),
             credentials: 'include',
-            headers:{
-                sessionid:getCookie("sessionid"),
-            }
         })
             .then(res => res.json())
             .then((result)=>{
@@ -56,6 +42,45 @@ class Main extends Component {
 			flag:2,
 		})
 	}
+
+    User=()=>{
+        fetch(backendUrl+"user_info/",{
+            method:"post",
+            mode:"cors",
+            body:JSON.stringify(this.state),
+            credentials: 'include',
+        })
+            .then(res => res.json())
+            .then((result)=>{
+                if(result.type === "teacher"){
+                    this.setState({
+                        flag:4,
+                    })
+                }else if(result.type === "student"){
+                    this.setState({
+                        flag:5,
+                    })
+                }
+        })
+    }
+
+    Del=()=>{
+
+        fetch(backendUrl+"logout/",{
+            method:"get",
+            mode:"cors",
+            credentials: 'include',
+        })
+            .then(res => res.json())
+            .then((result)=>{
+                if(result.isSuccess){
+                    this.setState({
+                        flag:0,
+                    })
+                }
+        })
+
+    }
 
 	render() {
         if (this.state.flag === 0) {
@@ -80,11 +105,16 @@ class Main extends Component {
                     <body className="Header">
                         <img src={ZjuLogo}></img>
                         <div id="button">
-                            <Button>用户中心</Button>
+                            <Button onClick = {this.User}>用户中心</Button>
+                            <Button onClick = {this.Del}>注销</Button>
                         </div>
                     </body>
                 </div>
             );
+        } else if (this.state.flag === 4) {
+            return (<Redirect to={{ pathname: '/Teacher' }} />)
+        } else if (this.state.flag === 5) {
+            return (<Redirect to={{ pathname: '/Student' }} />)
         }
 		
 	}

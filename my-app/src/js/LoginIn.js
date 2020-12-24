@@ -126,7 +126,7 @@ class LoginIn extends Component {
         } else if (this.state.flag === 0) {
             return <Redirect to={{ pathname: '/' }} />
         } else if (this.state.flag === 3) {
-            return <Redirect to={{ pathname: '/User' }} />
+            return <Redirect to={{ pathname: '/Student' }} />
         } else if (this.state.flag === 4) {
             return <Redirect to={{ pathname: '/Teacher'}} />
         }

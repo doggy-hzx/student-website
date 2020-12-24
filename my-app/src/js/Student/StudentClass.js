@@ -110,7 +110,7 @@ class StudentClass extends Component {
 				</div>
 			);
 		}else if(this.state.flag === 6){
-			return <Redirect to = {{pathname:'/StudentClassChoose'}} />
+			return <Redirect to = {{pathname:'/StudentChoose'}} />
 		}
 		else if(this.state.flag === 5){
 			return (
