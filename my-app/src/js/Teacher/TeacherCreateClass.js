@@ -13,12 +13,20 @@ class TeacherCreateClass extends Component {
 
             flag:0,
 
+            classid:"",
             classname:"",
             classtime:"",
             classteacher:"",
             classinfo:"",
         };
     }
+
+    getClassid=(e)=>{
+        this.setState({
+            classid:e.target.value,
+        })
+    }
+
     getClassname=(e)=>{
         this.setState({
             classname:e.target.value,
@@ -79,6 +87,16 @@ class TeacherCreateClass extends Component {
                             colon = {false}
                             onFinish = {this.onFinish}
                         >
+                            <Form.Item
+                                label = "课程ID"
+                                name = "classid"
+                                rules = {[{required:true,message:'请输入ID'}]}
+                            >
+                                <Input onChange = {(e)=>this.getClassid(e)}></Input>
+                            </Form.Item>
+
+                            <Divider></Divider>
+
                             <Form.Item
                                 label = "课程名称"
                                 name = "classname"
