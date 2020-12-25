@@ -22,7 +22,9 @@ class ClassInfo extends Component {
             classinfo:"",
             classteacher:"",
             studentnumber:"",
-            homework:[],
+            homework:[
+                {homeworkname:"homework"}
+            ],
             
             tclassname:"",
             tclasstime:"",

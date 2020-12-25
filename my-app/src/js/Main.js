@@ -28,6 +28,16 @@ class Main extends Component {
                 {classname:"class8",classinfo:"class8 info"},
                 {classname:"class9",classinfo:"class9 info"},
                 {classname:"class10",classinfo:"class10 info"},
+                {classname:"class11",classinfo:"class11 info"},
+                {classname:"class12",classinfo:"class12 info"},
+                {classname:"class13",classinfo:"class13 info"},
+                {classname:"class14",classinfo:"class14 info"},
+                {classname:"class15",classinfo:"class15 info"},
+                {classname:"class16",classinfo:"class16 info"},
+                {classname:"class17",classinfo:"class17 info"},
+                {classname:"class18",classinfo:"class18 info"},
+                {classname:"class19",classinfo:"class19 info"},
+                {classname:"class20",classinfo:"class20 info"},
             ]
 		};
 	}
