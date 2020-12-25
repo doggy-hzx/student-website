@@ -8,12 +8,27 @@ import { backendUrl, getCookie } from './Common';
 
 const { Meta } = Card;
 
+var to = {
+    classname:"",
+}
+
 class Main extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
             flag: 0,
-            class:[]
+            class:[
+                {classname:"class1",classinfo:"class1 info"},
+                {classname:"class2",classinfo:"class2 info"},
+                {classname:"class3",classinfo:"class3 info"},
+                {classname:"class4",classinfo:"class4 info"},
+                {classname:"class5",classinfo:"class5 info"},
+                {classname:"class6",classinfo:"class6 info"},
+                {classname:"class7",classinfo:"class7 info"},
+                {classname:"class8",classinfo:"class8 info"},
+                {classname:"class9",classinfo:"class9 info"},
+                {classname:"class10",classinfo:"class10 info"},
+            ]
 		};
 	}
 
@@ -87,6 +102,15 @@ class Main extends Component {
 
     }
 
+    toClass=(e)=>{
+
+        to.classname = e.classname;
+        this.setState({
+            flag:6,
+        })
+
+    }
+
 	render() {
         if (this.state.flag === 0) {
             return (
@@ -110,7 +134,7 @@ class Main extends Component {
                                     <Card
                                         hoverable
                                     >
-                                        <Meta title={item.classname} description={item.classinfo}></Meta>
+                                        <Meta title={item.classname} description={item.classinfo} onClick = {()=>this.toClass(item)}></Meta>
                                     </Card>
                                 </List.Item>
                             }
@@ -140,6 +164,14 @@ class Main extends Component {
             return (<Redirect to={{ pathname: '/Teacher' }} />)
         } else if (this.state.flag === 5) {
             return (<Redirect to={{ pathname: '/Student' }} />)
+        } else if (this.state.flag === 6) {
+            return (<Redirect to = {
+                {
+                    pathname:'/StudentClassInfo',
+                    state:to,
+                }
+            }
+            ></Redirect>)
         }
 		
 	}

@@ -175,6 +175,9 @@ class ClassInfo extends Component {
                         >
                         </List>
                         </List>
+
+                        <Divider></Divider>
+
                     </div>
 
                 </div>

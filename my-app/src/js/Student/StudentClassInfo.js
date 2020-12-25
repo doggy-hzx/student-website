@@ -16,13 +16,17 @@ class ClassInfo extends Component {
 
             flag:0,
 
-            classid:"",
+            classid:"1",
             classname:"",
-            classtime:"",
-            classinfo:"",
-            classteacher:"",
-            studentnumber:"",
-            homework:[],
+            classtime:"周一 34",
+            classinfo:"this is a class",
+            classteacher:"teacher",
+            studentnumber:"1",
+            homework:[
+                {homeworkname:"homework1"},
+                {homeworkname:"homework2"},
+                {homeworkname:"homework3"},
+            ],
         };
     }
 
@@ -81,6 +85,18 @@ class ClassInfo extends Component {
         toHomework.homeworkname = e.homeworkname;
         this.setState({
             flag:1,
+        })
+    }
+
+    setToCommit=()=>{
+        this.setState({
+            flag:2,
+        })
+    }
+
+    Return=()=>{
+        this.setState({
+            flag:3,
         })
     }
 
@@ -150,6 +166,15 @@ class ClassInfo extends Component {
                         >
                         </List>
                         </List>
+                        <Divider></Divider>
+
+                        <Button style={{width:700}} onClick = {this.setToCommit}>课程论坛</Button>
+
+                        <Divider></Divider>
+
+                        <Button style={{width:700}} onClick = {this.Return}>返回主页</Button>
+                        
+                        <Divider></Divider>
                     </div>
 
                 </div>
@@ -163,6 +188,17 @@ class ClassInfo extends Component {
                     }
                 }/>
             )
+        }else if(this.state.flag === 2){
+            return(
+                <Redirect to = {
+                    {
+                        pathname:'/Commit',
+                        state:this.state,
+                    }
+                }/>
+            )
+        }else if(this.state.flag === 3){
+            return(<Redirect to={{pathname:'/'}}></Redirect>)
         }
     }
 

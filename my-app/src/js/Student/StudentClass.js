@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import '../../asserts/css/Student.css'
-import { List, Avatar, Button } from 'antd';
+import { List, Avatar, Button, Divider } from 'antd';
 import Title from '../Title';
 import StudentSelect from './StudentSelect'
 import { backendUrl, getCookie, setCookie } from '../Common';
@@ -15,7 +15,18 @@ class StudentClass extends Component {
 		super(props);
 		this.state = {
 			flag:4,
-			class:[]
+			class:[
+                {classname:"class1",classinfo:"class1 info"},
+                {classname:"class2",classinfo:"class2 info"},
+                {classname:"class3",classinfo:"class3 info"},
+                {classname:"class4",classinfo:"class4 info"},
+                {classname:"class5",classinfo:"class5 info"},
+                {classname:"class6",classinfo:"class6 info"},
+                {classname:"class7",classinfo:"class7 info"},
+                {classname:"class8",classinfo:"class8 info"},
+                {classname:"class9",classinfo:"class9 info"},
+                {classname:"class10",classinfo:"class10 info"},
+			]
 		};
 	}
 
@@ -102,6 +113,8 @@ class StudentClass extends Component {
 							}
 
 						></List>
+
+				        <Divider></Divider>
 
 					</div>
 				</div>

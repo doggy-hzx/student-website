@@ -4,6 +4,8 @@ import './asserts/css/App.css'
 import LoginIn from './js/LoginIn';
 import Main from './js/Main';
 import Create from './js/Create';
+import Commit from './js/Commit';
+
 import Teacher from './js/Teacher/Teacher';
 import TeacherClass from './js/Teacher/TeacherClass';
 import TeacherChange from './js/Teacher/TeacherChange';
@@ -32,6 +34,7 @@ class App extends Component {
                     <Route exact path = "/" component = {Main}></Route>
                     <Route exact path = "/LoginIn" component = {LoginIn}></Route>
                     <Route exact path = "/Create" component = {Create}></Route>
+                    <Route exact path = "/Commit" component = {Commit}></Route>
 
                     {/* 教师的route */}
                     <Route exact path = "/Teacher" component = {Teacher}></Route>

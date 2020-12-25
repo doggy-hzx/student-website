@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route ,Redirect } from 'react-router-dom';
-import { Input, Button, Radio } from 'antd';
+import { Input, Button, Radio, Divider } from 'antd';
 import { backendUrl, getCookie } from './Common'
 import '../asserts/css/App.css';
 import '../asserts/css/Logo.css';
@@ -151,9 +151,11 @@ class Create extends Component {
                                 </div>
                             </form>
                             <Radio.Group onChange={(e)=>this.Choose(e)}>
-                                <Radio value={"teacher"} option = "button">Teacher</Radio>
-                                <Radio value={"student"} option = "button">Student</Radio>
+                                <Radio.Button value={"teacher"}>Teacher</Radio.Button>
+                                <Divider type = "vertical"></Divider>
+                                <Radio.Button value={"student"}>Student</Radio.Button>
                             </Radio.Group>
+                            <Divider></Divider>
                             <div>
                                 <Button onClick = {this.UserAppData}>
                                     用户注册

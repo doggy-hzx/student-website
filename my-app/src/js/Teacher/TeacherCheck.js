@@ -10,8 +10,8 @@ class TeacherCheck extends Component {
 
             flag:0,
 
-            studentname:"",
-            studentinfo:"",
+            studentname:"student",
+            studentinfo:"student info",
             score:0,
 
         };

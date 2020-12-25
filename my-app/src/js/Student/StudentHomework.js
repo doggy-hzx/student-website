@@ -13,8 +13,8 @@ class TeacherHomework extends Component {
             flag:0,
 
             homeworkname:"",
-            deadline:"",
-            homeworkinfo:"",
+            deadline:"周一 34",
+            homeworkinfo:"this is a homework",
             homeworkdo:"",
         };
     }
