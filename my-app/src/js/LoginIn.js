@@ -87,6 +87,12 @@ class LoginIn extends Component {
         })
     }
 
+    Create=()=>{
+        this.setState({
+            flag:2,
+        })
+    }
+
     render(){
         if (this.state.flag === 1) {
             return (
@@ -115,6 +121,11 @@ class LoginIn extends Component {
                                 </Button>
                             </div>
                             <div>
+                                <Button onClick={this.Create}>
+                                    注册
+                                </Button>
+                            </div>
+                            <div>
                                 <Button onClick={this.Back}>
                                     返回
                                 </Button>
@@ -129,6 +140,8 @@ class LoginIn extends Component {
             return <Redirect to={{ pathname: '/Student' }} />
         } else if (this.state.flag === 4) {
             return <Redirect to={{ pathname: '/Teacher'}} />
+        } else if(this.state.flag === 2) {
+            return <Redirect to={{ pathname: '/Create'}} />
         }
         
     }

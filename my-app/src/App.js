@@ -20,6 +20,7 @@ import StudentChange from './js/Student/StudentChange';
 import StudentClassInfo from './js/Student/StudentClassInfo';
 import StudentHomework from './js/Student/StudentHomework';
 import StudentChoose from './js/Student/StudentChoose';
+import StudentTodo from './js/Student/StudentTodo';
 
 class App extends Component {
 
@@ -52,6 +53,7 @@ class App extends Component {
                     <Route exact path = "/StudentClassInfo" component = {StudentClassInfo}></Route>
                     <Route exact path = "/StudentHomework" component = {StudentHomework}></Route>
                     <Route exact path = "/StudentChoose" component = {StudentChoose}></Route>
+                    <Route exact path = "/StudentTodo" component = {StudentTodo}></Route>
 
                 </div>
             </Router>

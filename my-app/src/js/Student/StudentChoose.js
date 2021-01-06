@@ -75,6 +75,12 @@ class StudentChoose extends Component {
 
 	Choose=()=>{
 	}
+
+	Todo=()=>{
+		this.setState({
+			flag:7,
+		})
+	}
 	
     render() {
 		if(this.state.flag === 1){
@@ -87,7 +93,7 @@ class StudentChoose extends Component {
 			return (
 				<div>
 					<Title></Title>
-					<StudentSelect Info = {this.Info} Change = {this.Change} Class = {this.Class} Choose = {this.Choose}></StudentSelect>
+					<StudentSelect Info = {this.Info} Change = {this.Change} Class = {this.Class} Choose = {this.Choose} Todo = {this.Todo}></StudentSelect>
 					<div className = "Student">
 						<List
 							header = {<div>已选课程</div>}
@@ -111,8 +117,7 @@ class StudentChoose extends Component {
 			);
 		}else if(this.state.flag === 6){
 			return <Redirect to = {{pathname:'/StudentClass'}} />
-		}
-		else if(this.state.flag === 5){
+		}else if(this.state.flag === 5){
 			return (
 				<Redirect to = {
 					{
@@ -121,6 +126,8 @@ class StudentChoose extends Component {
 					}
 				}/>
 			)
+		}else if(this.state.flag === 7){
+			return <Redirect to = {{pathname:'/StudentTodo'}} />
 		}
     }
 }

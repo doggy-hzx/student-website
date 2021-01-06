@@ -66,12 +66,18 @@ class User extends Component {
         })
     }
 
+    Todo=()=>{
+        this.setState({
+            flag:6,
+        })
+    }
+
     render() {
         if(this.state.flag === 1){
             return (
                 <div>
                     <Title></Title>
-                    <StudentSelect Info = {this.Info} Change = {this.Change} Class = {this.Class} Choose = {this.Choose}></StudentSelect>
+                    <StudentSelect Info = {this.Info} Change = {this.Change} Class = {this.Class} Choose = {this.Choose} Todo = {this.Todo}></StudentSelect>
                     <div className = "Student">
                         <List>
                             <List.Item>
@@ -112,6 +118,8 @@ class User extends Component {
             return <Redirect to = {{pathname:'/StudentClass'}} />
         }else if(this.state.flag === 5){
             return <Redirect to = {{pathname:'/StudentChoose'}} />
+        }else if(this.state.flag === 6){
+            return <Redirect to = {{pathname:'/StudentTodo'}} />
         }
     }
 }

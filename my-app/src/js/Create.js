@@ -151,9 +151,9 @@ class Create extends Component {
                                 </div>
                             </form>
                             <Radio.Group onChange={(e)=>this.Choose(e)}>
-                                <Radio.Button value={"teacher"}>Teacher</Radio.Button>
+                                <Radio.Button value={"teacher"} style = {{width:"200px"}}>教师</Radio.Button>
                                 <Divider type = "vertical"></Divider>
-                                <Radio.Button value={"student"}>Student</Radio.Button>
+                                <Radio.Button value={"student"} style = {{width:"200px"}}>学生</Radio.Button>
                             </Radio.Group>
                             <Divider></Divider>
                             <div>

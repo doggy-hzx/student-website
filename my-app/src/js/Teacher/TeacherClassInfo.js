@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, Input, Button, Divider } from 'antd';
+import { List, Input, Button, Divider, Dropdown, Menu } from 'antd';
 import '../../asserts/css/CreateClass.css'
 import Title from '../Title'
 import { backendUrl, getCookie, setCookie } from '../Common';
@@ -22,8 +22,18 @@ class ClassInfo extends Component {
             classinfo:"",
             classteacher:"",
             studentnumber:"",
+            
+            student:[
+                {studentname:"学生1"},
+                {studentname:"学生2"},
+                {studentname:"学生3"},
+                {studentname:"学生4"},
+            ],
             homework:[
                 {homeworkname:"homework"}
+            ],
+            assistance:[
+                {name:"助教1",tname:"助教2"}
             ],
             
             tclassname:"",
@@ -31,6 +41,7 @@ class ClassInfo extends Component {
             tclassinfo:"",
             tclassteacher:"",
         };
+
     }
 
     componentDidMount() {
@@ -91,97 +102,137 @@ class ClassInfo extends Component {
         })
     }
 
+    Return=()=>{
+        this.setState({
+            flag:2,
+        })
+    }
+
     render() {
         if(this.state.flag === 0){
             return (
                 <div>
+
                     <Title></Title>
 
                     <div className = "CreateClass">
-                        <List
-                        >
-                        <List.Item>
-                            <p>
-                                课程名称:
-                                <Divider type = "vertical"></Divider>
-                                {this.state.classname}
-                            </p>
-                            <div>
-                                <Input onChange = {(e)=>this.setClassname(e)} style = {{width:100}}></Input>
-                                <Divider type = "vertical"></Divider>
-                                <Button>保存更改</Button>
-                            </div>
-                        </List.Item>
-                        <Divider></Divider>
-                        <List.Item>
-                            <p>
-                                上课时间:
-                                <Divider type = "vertical"></Divider>
-                                {this.state.classtime}
-                            </p>
-                            <div>
-                                <Input onChange = {(e)=>this.setClasstime(e)} style = {{width:100}}></Input>
-                                <Divider type = "vertical"></Divider>
-                                <Button>保存更改</Button>
-                            </div>
-                        </List.Item>
-                        <Divider></Divider>
-                        <List.Item>
-                            <p>
-                                任课老师:
-                                <Divider type = "vertical"></Divider>
-                                {this.state.classteacher}
-                            </p>
-                            <div>
-                                <Input onChange = {(e)=>this.setClassinfo(e)} style = {{width:100}}></Input>
-                                <Divider type = "vertical"></Divider>
-                                <Button>保存更改</Button>
-                            </div>
-                        </List.Item>
-                        <Divider></Divider>
-                        <List.Item>
-                            <p>
-                                课程介绍:
-                                <Divider type = "vertical"></Divider>
-                                {this.state.classinfo}
-                            </p>
-                            <div>
-                                <Input onChange = {(e)=>this.setClassteacher(e)} style = {{width:100}}></Input>
-                                <Divider type = "vertical"></Divider>
-                                <Button>保存更改</Button>
-                            </div>
-                        </List.Item>
-                        <Divider></Divider>
-                        <List.Item>
-                            <p>
-                                选课人数:
-                                <Divider type = "vertical"></Divider>
-                                {this.state.studentnumber}
-                            </p>
-                        </List.Item>
-                        <Divider></Divider>
+                        <List>
+                            <List.Item>
+                                <p>
+                                    课程名称:
+                                    <Divider type = "vertical"></Divider>
+                                    {this.state.classname}
+                                </p>
+                                <div>
+                                    <Input onChange = {(e)=>this.setClassname(e)} style = {{width:100}}></Input>
+                                    <Divider type = "vertical"></Divider>
+                                    <Button>保存更改</Button>
+                                </div>
+                            </List.Item>
+                            <List
+                                bordered
+                                header = {<div>助教姓名</div>}
+                                dataSource = {this.state.assistance}
 
-                        <List
-                            bordered
-                            dataSource={this.state.homework}
-                            renderItem={item => 
-                            
-                                <List.Item>
-                                    <List.Item.Meta
-                                        title = {<a>{item.homeworkname}</a>}
-                                        onClick = {()=>this.setToHomework(item)}
-                                    >
-                                    </List.Item.Meta>
-                                </List.Item>
-                            }
-                        >
-                        </List>
-                        </List>
+                                renderItem = {
+                                    item => (
+                                        <List.Item>
 
-                        <Divider></Divider>
+                                            <List.Item.Meta
+                                                title = {<a>{item.name}</a>}
+                                            ></List.Item.Meta>
+
+                                            <Divider type = "vertical"></Divider>
+
+                                            <Button>删除助教</Button>
+
+                                        </List.Item>
+                                    )
+                                }
+
+                            >   
+                            </List>
+                            <List.Item>
+                                <p>
+                                    助教姓名:
+                                    <Divider type = "vertical"></Divider>
+                                    {this.state.classtime}
+                                </p>
+                                <div>
+                                    <Input onChange = {(e)=>this.setClasstime(e)} style = {{width:100}}></Input>
+                                    <Divider type = "vertical"></Divider>
+                                    <Button>添加助教</Button>
+                                </div>
+                            </List.Item>
+                            <List.Item>
+                                <p>
+                                    上课时间:
+                                    <Divider type = "vertical"></Divider>
+                                    {this.state.classtime}
+                                </p>
+                                <div>
+                                    <Input onChange = {(e)=>this.setClasstime(e)} style = {{width:100}}></Input>
+                                    <Divider type = "vertical"></Divider>
+                                    <Button>保存更改</Button>
+                                </div>
+                            </List.Item>
+                            <List.Item>
+                                <p>
+                                    任课老师:
+                                    <Divider type = "vertical"></Divider>
+                                    {this.state.classteacher}
+                                </p>
+                                <div>
+                                    <Input onChange = {(e)=>this.setClassinfo(e)} style = {{width:100}}></Input>
+                                    <Divider type = "vertical"></Divider>
+                                    <Button>保存更改</Button>
+                                </div>
+                            </List.Item>
+                            <List.Item>
+                                <p>
+                                    课程介绍:
+                                    <Divider type = "vertical"></Divider>
+                                    {this.state.classinfo}
+                                </p>
+                                <div>
+                                    <Input onChange = {(e)=>this.setClassteacher(e)} style = {{width:100}}></Input>
+                                    <Divider type = "vertical"></Divider>
+                                    <Button>保存更改</Button>
+                                </div>
+                            </List.Item>
+                            <List.Item>
+                                <p>
+                                    选课人数:
+                                    <Divider type = "vertical"></Divider>
+                                    {this.state.studentnumber}
+                                </p>
+                            </List.Item>
+
+                            <List
+                                bordered
+                                header={<div>课程作业</div>}
+                                dataSource={this.state.homework}
+                                renderItem={item => 
+                                
+                                    <List.Item>
+                                        <List.Item.Meta
+                                            title = {<a>{item.homeworkname}</a>}
+                                            onClick = {()=>this.setToHomework(item)}
+                                        >
+                                        </List.Item.Meta>
+                                    </List.Item>
+                                }
+                            >
+                            </List>
+                            <Divider></Divider>
+
+                            <Button onClick = {()=>this.Return()} block>返回主页</Button>
+
+                            <Divider></Divider>
+
+                        </List>
 
                     </div>
-
                 </div>
             );
         }else if(this.state.flag === 1){
@@ -192,6 +243,10 @@ class ClassInfo extends Component {
                         state:toHomework,
                     }
                 }/>
+            )
+        }else if(this.state.flag === 2){
+            return(
+                <Redirect to = {{pathname:'/'}}></Redirect>
             )
         }
     }

@@ -80,7 +80,7 @@ class TeacherClass extends Component {
 	Delete=(e)=>{
 		const arrs = this.state.class;
 	}
-	
+
     render() {
 		if(this.state.flag === 1){
             return <Redirect to = {{pathname:'/Teacher'}} />
@@ -101,10 +101,12 @@ class TeacherClass extends Component {
 							renderItem = {
 								item => (
 									<List.Item>
+
 										<List.Item.Meta
 											title = {<a>{item.classname}</a>}
 											onClick = {()=>this.update(item)}
 										></List.Item.Meta>
+										
 										<Button onClick = {(e)=>this.Delete(e)}>删除课程</Button>
 									</List.Item>
 								)

@@ -142,12 +142,18 @@ class Change extends Component {
         })
     }
 
+    Todo=()=>{
+        this.setState({
+            flag:6,
+        })
+    }
+
     render() {
         if(this.state.flag === 2){
             return (
                 <div>
                     <Title></Title>
-                    <StudentSelect Info = {this.Info} Change = {this.Change} Class = {this.Class} Choose = {this.Choose}></StudentSelect>
+                    <StudentSelect Info = {this.Info} Change = {this.Change} Class = {this.Class} Choose = {this.Choose} Todo = {this.Todo}></StudentSelect>
                     <div>
                         <Input.Group className = "Change">
                             <Input prefix = "username" type = "text" placeholder = {this.state.name} ref = "name" onChange = {(e)=>this.GetUsername(e)}></Input>
@@ -172,6 +178,8 @@ class Change extends Component {
             return <Redirect to = {{pathname:'/Student'}} />
         }else if(this.state.flag === 5){
             return <Redirect to = {{pathname:'/StudentChoose'}} />
+        }else if(this.state.flag === 6){
+            return <Redirect to = {{pathname:'/StudentTodo'}} />
         }
     }
 }

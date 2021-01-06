@@ -14,7 +14,7 @@ class TeacherHomework extends Component {
 
             homeworkname:"",
             deadline:"周一 34",
-            homeworkinfo:"this is a homework",
+            homeworkinfo:"这是一个作业",
             homeworkdo:"",
         };
     }
@@ -108,7 +108,7 @@ class TeacherHomework extends Component {
             return (
                 <Redirect to={
                     {
-                        pathname:'/Student',
+                        pathname:'/',
                     }
                 }/>
             )

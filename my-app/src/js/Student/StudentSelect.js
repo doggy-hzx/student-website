@@ -19,6 +19,10 @@ class StudentSelect extends Component {
         this.props.Change();
     }
 
+    Todo=()=>{
+        this.props.Todo();
+    }
+
     Class=()=>{
         this.props.Class();
     }
@@ -40,6 +44,7 @@ class StudentSelect extends Component {
                     <Menu mode  = "inline">
                         <Menu.Item onClick = {this.Info.bind()}>用户信息</Menu.Item>
                         <Menu.Item onClick = {this.Change.bind()}>修改信息</Menu.Item>
+                        <Menu.Item onClick = {this.Todo.bind()}>待办事项</Menu.Item>
                         <Menu.Item onClick = {this.Class.bind()}>选择课程</Menu.Item>
                         <Menu.Item onClick = {this.Choose.bind()}>已选课程</Menu.Item>
                         <Menu.Item onClick = {this.Back}>返回首页</Menu.Item>
