@@ -24,16 +24,10 @@ class ClassInfo extends Component {
             studentnumber:"",
             
             student:[
-                {studentname:"学生1"},
-                {studentname:"学生2"},
-                {studentname:"学生3"},
-                {studentname:"学生4"},
             ],
             homework:[
-                {homeworkname:"homework"}
             ],
             assistance:[
-                {name:"助教1",tname:"助教2"}
             ],
             
             tclassname:"",

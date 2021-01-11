@@ -68,7 +68,7 @@ class TeacherClass extends Component {
 
 	Delete=(e)=>{
 
-		fetch(backendUrl + "get_courses/", {
+		fetch(backendUrl + "delete_course/", {
 			method: "post",
 			mode: "cors",
 			body:JSON.stringify(e),
