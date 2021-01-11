@@ -83,26 +83,24 @@ class TeacherClass extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-            },
-                (error) => {
-                    console.log(error);
-                })
-
-        fetch(backendUrl + "get_courses/", {
-			method: "get",
-			mode: "cors",
-            credentials: "include",
-        })
-            .then(res => res.json())
-            .then((result) => {
-				this.setState({
-					class:result.data,
+				fetch(backendUrl + "get_courses/", {
+					method: "get",
+					mode: "cors",
+					credentials: "include",
 				})
+				.then(res => res.json())
+				.then((result) => {
+					this.setState({
+						class:result.data,
+					})
+				},
+					(error) => {
+						console.log(error);
+					})
             },
                 (error) => {
                     console.log(error);
                 })
-
 	}
 
     render() {
