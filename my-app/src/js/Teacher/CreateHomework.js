@@ -3,7 +3,6 @@ import Title from '../Title'
 import { List, Button, Divider, Input } from 'antd'
 import { Redirect } from 'react-router-dom';
 import { backendUrl, getCookie, setCookie } from '../Common';
-import Create from '../Create';
 
 var to = {
     stuname:"",
@@ -77,6 +76,12 @@ class CreateHomework extends Component {
         
     }
 
+    Return=()=>{
+        this.setState({
+            flag:3,
+        })
+    }
+
     render() {
         if(this.state.flag === 0){
             return (
@@ -122,6 +127,10 @@ class CreateHomework extends Component {
                             <Button onClick = {()=>this.Create()} block>创建作业</Button>
 
                             <Divider></Divider>
+                            
+                            <Button onClick = {()=>this.Return()} block></Button>
+                            
+                            <Divider></Divider>
                     </div>
 
                 </div>
@@ -137,6 +146,8 @@ class CreateHomework extends Component {
             )
         }else if(this.state.flag === 2){
             return <Redirect to = {{pathname:'/TeacherClassInfo'}}></Redirect>
+        }else if(this.state.flag === 3){
+            return <Redirect to = {{pathname:'/Teacher'}}></Redirect>
         }
     }
 }
