@@ -15,7 +15,10 @@ class TeacherClass extends Component {
 		super(props);
 		this.state = {
 			flag:4,
-			class:[]
+			class:[
+				{course_name:123,course_id:123}
+			],
+			course_id:"",
 		};
 	}
 
@@ -68,10 +71,14 @@ class TeacherClass extends Component {
 
 	Delete=(e)=>{
 
+		this.setState({
+			course_id:e.course_id,
+		})
+
 		fetch(backendUrl + "delete_course/", {
 			method: "post",
 			mode: "cors",
-			body:JSON.stringify(e),
+			body:JSON.stringify(this.state),
             credentials: "include",
         })
             .then(res => res.json())
