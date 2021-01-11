@@ -82,6 +82,15 @@ class Change extends Component {
             })
             .then(res => res.json())
             .then((result)=>{
+
+                if(result.isSuccess){
+
+                    alert("修改成功");
+
+                    this.setState({
+                        flag:1,
+                    })
+                }
             },
             (error)=>{
                 console.log(error);

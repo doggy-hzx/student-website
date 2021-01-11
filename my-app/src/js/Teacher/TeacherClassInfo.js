@@ -102,6 +102,12 @@ class ClassInfo extends Component {
         })
     }
 
+    CreateHomeword=()=>{
+        this.setState({
+            
+        })
+    }
+
     Save=()=>{
 
         fetch(backendUrl + "user/profile/", {
