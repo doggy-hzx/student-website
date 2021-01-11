@@ -108,6 +108,42 @@ class ClassInfo extends Component {
         })
     }
 
+    Save=()=>{
+
+        fetch(backendUrl + "user/profile/", {
+            method: "post",
+            body: JSON.stringify(this.state),
+            mode: "cors",
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+            },
+                (error) => {
+                    console.log(error);
+                })
+
+        fetch(backendUrl + "user/profile/", {
+            method: "get",
+            mode: "cors",
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+                this.setState({
+                    classname: result.classname,
+                    classtime: result.classtime,
+                    classinfo: result.classinfo,
+                    classteacher: result.classteacher,
+                    studentnumber:result.studentnumber,
+                })
+            },
+                (error) => {
+                    console.log(error);
+                })
+
+    }
+
     render() {
         if(this.state.flag === 0){
             return (
@@ -126,7 +162,6 @@ class ClassInfo extends Component {
                                 <div>
                                     <Input onChange = {(e)=>this.setClassname(e)} style = {{width:100}}></Input>
                                     <Divider type = "vertical"></Divider>
-                                    <Button>保存更改</Button>
                                 </div>
                             </List.Item>
                             <List
@@ -173,7 +208,6 @@ class ClassInfo extends Component {
                                 <div>
                                     <Input onChange = {(e)=>this.setClasstime(e)} style = {{width:100}}></Input>
                                     <Divider type = "vertical"></Divider>
-                                    <Button>保存更改</Button>
                                 </div>
                             </List.Item>
                             <List.Item>
@@ -185,7 +219,6 @@ class ClassInfo extends Component {
                                 <div>
                                     <Input onChange = {(e)=>this.setClassinfo(e)} style = {{width:100}}></Input>
                                     <Divider type = "vertical"></Divider>
-                                    <Button>保存更改</Button>
                                 </div>
                             </List.Item>
                             <List.Item>
@@ -197,7 +230,6 @@ class ClassInfo extends Component {
                                 <div>
                                     <Input onChange = {(e)=>this.setClassteacher(e)} style = {{width:100}}></Input>
                                     <Divider type = "vertical"></Divider>
-                                    <Button>保存更改</Button>
                                 </div>
                             </List.Item>
                             <List.Item>
@@ -224,6 +256,11 @@ class ClassInfo extends Component {
                                 }
                             >
                             </List>
+
+                            <Divider></Divider>
+
+                            <Button onClick = {()=>this.Save()} block>保存更改</Button>
+
                             <Divider></Divider>
 
                             <Button onClick = {()=>this.Return()} block>返回主页</Button>

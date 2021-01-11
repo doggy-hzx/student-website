@@ -21,7 +21,7 @@ class TeacherClass extends Component {
 
 	componentDidMount(){
 
-        fetch(backendUrl + "get_courses", {
+        fetch(backendUrl + "get_courses/", {
 			method: "get",
             mode: "cors",
             credentials: "include",
@@ -68,7 +68,7 @@ class TeacherClass extends Component {
 
 	Delete=(e)=>{
 
-		fetch(backendUrl + "get_courses", {
+		fetch(backendUrl + "get_courses/", {
 			method: "post",
 			mode: "cors",
 			body:JSON.stringify(e),
@@ -81,7 +81,7 @@ class TeacherClass extends Component {
                     console.log(error);
                 })
 
-        fetch(backendUrl + "get_courses", {
+        fetch(backendUrl + "get_courses/", {
 			method: "get",
 			mode: "cors",
             credentials: "include",
