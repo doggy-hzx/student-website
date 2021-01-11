@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import Title from '../Title'
 import { List, Button, Divider, Input } from 'antd'
 import { Redirect } from 'react-router-dom';
+import { backendUrl, getCookie, setCookie } from '../Common';
+import Create from '../Create';
 
 var to = {
     stuname:"",
 }
 
-class TeacherHomework extends Component {
+class CreateHomework extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,46 +19,56 @@ class TeacherHomework extends Component {
             homeworkname:"",
             deadline:"",
             homeworkinfo:"",
-            submitstudent:[],
-
-            thomeworkname:"",
-            tdeadline:"",
-            thomeworkinfo:"",
 
         };
     }
 
     componentDidMount(){
-
-        this.setState({
-            homeworkname:this.props.location.state.homeworkname,
-        })
-
     }
 
     setHomeworkInfo=(e)=>{
         this.setState({
-            thomeworkinfo:e,
+            homeworkinfo:e,
         })
     }
 
     setDeadline=(e)=>{
         this.setState({
-            tdeadline:e,
+            deadline:e,
         })
     }   
 
     setHomeworkname=(e)=>{
         this.setState({
-            thomeworkname:e,
+            homeworkname:e,
         })
     }
 
-    setToStuHomework=(e)=>{
-        to.stuname = e.stuname;
-        this.setState({
-            flag:1,
-        })
+    Create=()=>{
+        var deadline = /^(d{2}|d{4})(?:-)?([0]{1}d{1}|[1]{1}[0-2]{1})(?:-)?([0-2]{1}d{1}|[3]{1}[0-1]{1})(?:s)?([0-1]{1}d{1}|[2]{1}[0-3]{1})(?::)?([0-5]{1}d{1})(?::)?([0-5]{1}d{1})$/ig;
+        if(!deadline.test(this.deadline)){
+            alert("时间不合法");
+        }else{
+            fetch(backendUrl + "register/", {
+                method :"post",
+                mode: "cors",
+                body: JSON.stringify(this.state),
+                credentials: 'include',
+            })
+                .then(res => res.json())
+                .then((result) => {
+                    if (result.isSuccess) {
+                        alert("用户注册成功");
+                        this.setState({
+                            flag: 0,
+                        })
+                    }
+                },
+            (error)=>{
+                console.log(error);
+            })
+        }
+        
     }
 
     render() {
@@ -71,10 +83,9 @@ class TeacherHomework extends Component {
                                 <p>
                                     作业名称:
                                     <Divider type = "vertical"></Divider>
-                                    {this.state.homeworkname}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setHomeworkname(e)} style = {{width:100}}></Input>
+                                    <Input onChange = {(e)=>this.setHomeworkname(e)}></Input>
                                     <Divider type = "vertical"></Divider>
                                 </div>
                             </List.Item>
@@ -83,10 +94,9 @@ class TeacherHomework extends Component {
                                 <p>
                                     截止时间:
                                     <Divider type = "vertical"></Divider>
-                                    {this.state.deadline}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setDeadline(e)} style = {{width:100}}></Input>
+                                    <Input onChange = {(e)=>this.setDeadline(e)}></Input>
                                     <Divider type = "vertical"></Divider>
                                 </div>
                             </List.Item>
@@ -95,32 +105,15 @@ class TeacherHomework extends Component {
                                 <p>
                                     作业内容:
                                     <Divider type = "vertical"></Divider>
-                                    {this.state.homeworkinfo}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setHomeworkInfo(e)} style = {{width:100}}></Input>
+                                    <Input onChange = {(e)=>this.setHomeworkInfo(e)}></Input>
                                     <Divider type = "vertical"></Divider>
                                 </div>
                             </List.Item>
                             <Divider></Divider>
-                            <List
-                                bordered
-                                dataSource={this.state.submitstudent}
-                                renderItem={item => 
-                                
-                                    <List.Item>
-                                        <List.Item.Meta
-                                            title = {<a>{item.stuname}</a>}
-                                            onClick = {()=>this.setToStuHomework(item)}
-                                        >
-                                        </List.Item.Meta>
-                                    </List.Item>
-                                }
-                            >
-                            </List>
-                            <Divider></Divider>
                             
-                            <Button>保存更改</Button>
+                            <Button onClick = {()=>this.Create()} block>创建作业</Button>
 
                             <Divider></Divider>
                     </div>
@@ -140,4 +133,4 @@ class TeacherHomework extends Component {
     }
 }
 
-export default TeacherHomework;
+export default CreateHomework;

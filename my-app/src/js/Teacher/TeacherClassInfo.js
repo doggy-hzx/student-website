@@ -104,7 +104,7 @@ class ClassInfo extends Component {
 
     CreateHomeword=()=>{
         this.setState({
-            
+            flag:3,
         })
     }
 
@@ -289,6 +289,8 @@ class ClassInfo extends Component {
             return(
                 <Redirect to = {{pathname:'/'}}></Redirect>
             )
+        }else if(this.state.flag === 3){
+            return(<Redirect to = {{pathname:'/CreateHomework'}}></Redirect>)
         }
     }
 
