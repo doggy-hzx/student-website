@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 
 var toHomework = {
     homeworkname:'',
+    classid:'',
 }
 
 class ClassInfo extends Component {
@@ -91,6 +92,7 @@ class ClassInfo extends Component {
 
     setToHomework=(e)=>{
         toHomework.homeworkname = e.homeworkname;
+        toHomework.classid = this.state.classid;
         this.setState({
             flag:1,
         })
@@ -290,7 +292,7 @@ class ClassInfo extends Component {
                 <Redirect to = {{pathname:'/'}}></Redirect>
             )
         }else if(this.state.flag === 3){
-            return(<Redirect to = {{pathname:'/CreateHomework'}}></Redirect>)
+            return(<Redirect to = {{pathname:'/CreateHomework',state:toHomework,}}></Redirect>)
         }
     }
 

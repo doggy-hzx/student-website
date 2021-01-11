@@ -16,6 +16,8 @@ class CreateHomework extends Component {
 
             flag:0,
 
+            classid:"",
+
             homeworkname:"",
             deadline:"",
             homeworkinfo:"",
@@ -24,6 +26,9 @@ class CreateHomework extends Component {
     }
 
     componentDidMount(){
+        this.setState({
+            classid:this.props.location.state.classid,
+        })
     }
 
     setHomeworkInfo=(e)=>{
@@ -47,8 +52,6 @@ class CreateHomework extends Component {
     Create=()=>{
         var deadline = /^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)\s+([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/ig;
         
-        console.log(this.state.deadline);
-
         if(!deadline.test(this.state.deadline)){
             alert("时间不合法");
         }else{
