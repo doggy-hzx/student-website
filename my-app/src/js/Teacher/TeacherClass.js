@@ -16,7 +16,7 @@ class TeacherClass extends Component {
 		this.state = {
 			flag:4,
 			class:[
-				{course_name:123,course_id:123}
+				{course_name:123,course_id:123},
 			],
 			course_id:"",
 		};
@@ -131,7 +131,7 @@ class TeacherClass extends Component {
 											onClick = {()=>this.update(item)}
 										></List.Item.Meta>
 										
-										<Button onClick = {(item)=>this.Delete(item)}>删除课程</Button>
+										<Button onClick = {()=>this.Delete(item)}>删除课程</Button>
 									</List.Item>
 								)
 							}
