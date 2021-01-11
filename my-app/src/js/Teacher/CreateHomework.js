@@ -52,7 +52,7 @@ class CreateHomework extends Component {
         if(!deadline.test(this.state.deadline)){
             alert("时间不合法");
         }else{
-            fetch(backendUrl + "register/", {
+            fetch(backendUrl + "new_homework/", {
                 method :"post",
                 mode: "cors",
                 body: JSON.stringify(this.state),
