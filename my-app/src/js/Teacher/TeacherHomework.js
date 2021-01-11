@@ -14,6 +14,7 @@ class TeacherHomework extends Component {
 
             flag:0,
 
+            homeworkid:"",
             homeworkname:"",
             deadline:"",
             homeworkinfo:"",

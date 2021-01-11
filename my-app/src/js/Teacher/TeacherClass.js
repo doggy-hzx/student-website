@@ -7,7 +7,8 @@ import TeacherSelect from './TeacherSelect'
 import { backendUrl, getCookie, setCookie } from '../Common';
 
 var classupdate = {
-	classname:'1'
+	classname:'1',
+	classid:'',
 }
 
 class TeacherClass extends Component {
@@ -42,7 +43,8 @@ class TeacherClass extends Component {
 	}
 
 	update=(e)=>{
-		classupdate.coursename = e.coursename;
+		classupdate.classname = e.course_name;
+		classupdate.classid = e.course_id;
 		this.setState({
 			flag:5,
 		})

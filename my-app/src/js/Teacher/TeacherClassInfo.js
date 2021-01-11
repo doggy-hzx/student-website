@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 
 var toHomework = {
     homeworkname:'',
+    homeworkid:'',
     classid:'',
 }
 
@@ -24,8 +25,6 @@ class ClassInfo extends Component {
             classteacher:"",
             studentnumber:"",
             
-            student:[
-            ],
             homework:[
             ],
             assistance:[
@@ -42,23 +41,25 @@ class ClassInfo extends Component {
     componentDidMount() {
 
         this.setState({
-            classname:this.props.location.state.classname,
+            classid:this.props.location.state.classid,
         })
 
-        fetch(backendUrl + "user/profile/", {
-            method: "get",
+        fetch(backendUrl + "get_courseinfo", {
+            method: "post",
             mode: "cors",
+            body:JSON.stringify(this.state.classid),
             credentials: "include",
         })
             .then(res => res.json())
             .then((result) => {
                 this.setState({
-                    classid:result.classid,
                     classname: result.classname,
                     classtime: result.classtime,
-                    classinfo: result.classinfo,
-                    classteacher: result.classteacher,
-                    studentnumber:result.studentnumber,
+                    classinfo: result.description,
+                    classteacher: result.teacher_name,
+                    studentnumber:result.stu_num,
+                    assistance:result.ta_info,
+                    homework:result.homeworks,
                 })
             },
                 (error) => {
@@ -92,7 +93,8 @@ class ClassInfo extends Component {
     }
 
     setToHomework=(e)=>{
-        toHomework.homeworkname = e.homeworkname;
+        toHomework.homeworkname = e.name;
+        toHomework.homeid = e.id;
         toHomework.classid = this.state.classid;
         this.setState({
             flag:1,
@@ -251,7 +253,7 @@ class ClassInfo extends Component {
                                 
                                     <List.Item>
                                         <List.Item.Meta
-                                            title = {<a>{item.homeworkname}</a>}
+                                            title = {<a>{item.name}</a>}
                                             onClick = {()=>this.setToHomework(item)}
                                         >
                                         </List.Item.Meta>
@@ -264,9 +266,9 @@ class ClassInfo extends Component {
 
                             <Button onClick = {()=>this.CreateHomeword()} block>创建作业</Button>
 
-                            <Divider></Divider>
+                            {/*<Divider></Divider>
 
-                            <Button onClick = {()=>this.Save()} block>保存更改</Button>
+                            <Button onClick = {()=>this.Save()} block>保存更改</Button>*/}
 
                             <Divider></Divider>
 
