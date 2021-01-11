@@ -23,19 +23,6 @@ class Change extends Component {
     }
 
     componentDidMount(){
-
-        fetch(backendUrl+"modify_userinfo/",{
-            method:"get",
-            mode:"cors",
-            credentials:"include",
-        })
-            .then(res => res.json())
-            .then((result)=>{
-            },
-            (error)=>{
-                console.log(error);
-            })
-
     }
 
     GetUsername=(e)=>{
@@ -90,7 +77,7 @@ class Change extends Component {
             fetch(backendUrl+"modify_userinfo/",{
                 method:"post",
                 mode:"cors",
-                body:this.state,
+                body:JSON.stringify(this.state),
                 credentials:"include",
             })
             .then(res => res.json())
