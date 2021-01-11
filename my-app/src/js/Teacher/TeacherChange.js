@@ -24,7 +24,7 @@ class Change extends Component {
 
     componentDidMount(){
 
-        fetch(backendUrl+"user_info/",{
+        fetch(backendUrl+"motify_userinfo/",{
             method:"get",
             mode:"cors",
             credentials:"include",
@@ -87,7 +87,7 @@ class Change extends Component {
         }
         
         if(flag === 0){
-            fetch(backendUrl+"user_info/",{
+            fetch(backendUrl+"motify_userinfo/",{
                 method:"post",
                 mode:"cors",
                 body:this.state,

@@ -253,6 +253,10 @@ class ClassInfo extends Component {
 
                             <Divider></Divider>
 
+                            <Button onClick = {()=>this.CreateHomeword()} block>创建作业</Button>
+
+                            <Divider></Divider>
+
                             <Button onClick = {()=>this.Save()} block>保存更改</Button>
 
                             <Divider></Divider>
