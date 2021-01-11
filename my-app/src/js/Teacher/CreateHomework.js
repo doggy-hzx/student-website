@@ -64,10 +64,10 @@ class CreateHomework extends Component {
                 .then(res => res.json())
                 .then((result) => {
                     if (result.isSuccess) {
-                        alert("用户注册成功");
+                        alert("作业创建成功");
                         this.setState({
-                            flag: 0,
-                        })
+                            flag:2,
+                        });
                     }
                 },
             (error)=>{
@@ -135,6 +135,8 @@ class CreateHomework extends Component {
                     }
                 }/>
             )
+        }else if(this.state.flag === 2){
+            return <Redirect to = {{pathname:'/TeacherClassInfo'}}></Redirect>
         }
     }
 }

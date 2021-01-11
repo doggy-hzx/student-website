@@ -53,6 +53,7 @@ class ClassInfo extends Component {
             .then(res => res.json())
             .then((result) => {
                 this.setState({
+                    classid:result.classid,
                     classname: result.classname,
                     classtime: result.classtime,
                     classinfo: result.classinfo,
