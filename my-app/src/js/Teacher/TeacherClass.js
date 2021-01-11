@@ -15,32 +15,21 @@ class TeacherClass extends Component {
 		super(props);
 		this.state = {
 			flag:4,
-			class:[
-                {classname:"class1",classinfo:"class1 info"},
-                {classname:"class2",classinfo:"class2 info"},
-                {classname:"class3",classinfo:"class3 info"},
-                {classname:"class4",classinfo:"class4 info"},
-                {classname:"class5",classinfo:"class5 info"},
-                {classname:"class6",classinfo:"class6 info"},
-                {classname:"class7",classinfo:"class7 info"},
-                {classname:"class8",classinfo:"class8 info"},
-                {classname:"class9",classinfo:"class9 info"},
-                {classname:"class10",classinfo:"class10 info"},
-			]
+			class:[]
 		};
 	}
 
 	componentDidMount(){
 
-        fetch(backendUrl + "user/profile/", {
-            method: "get",
+        fetch(backendUrl + "get_courses", {
+			method: "get",
             mode: "cors",
             credentials: "include",
         })
             .then(res => res.json())
             .then((result) => {
                 this.setState({
-                    class:result.class,
+                    class:result.data,
                 })
             },
                 (error) => {
@@ -50,7 +39,7 @@ class TeacherClass extends Component {
 	}
 
 	update=(e)=>{
-		classupdate.classname = e.classname;
+		classupdate.coursename = e.coursename;
 		this.setState({
 			flag:5,
 		})
@@ -78,7 +67,35 @@ class TeacherClass extends Component {
 	}
 
 	Delete=(e)=>{
-		const arrs = this.state.class;
+
+		fetch(backendUrl + "get_courses", {
+			method: "post",
+			mode: "cors",
+			body:JSON.stringify(e),
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+            },
+                (error) => {
+                    console.log(error);
+                })
+
+        fetch(backendUrl + "get_courses", {
+			method: "get",
+			mode: "cors",
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+				this.setState({
+					class:result.data,
+				})
+            },
+                (error) => {
+                    console.log(error);
+                })
+
 	}
 
     render() {
@@ -103,11 +120,11 @@ class TeacherClass extends Component {
 									<List.Item>
 
 										<List.Item.Meta
-											title = {<a>{item.classname}</a>}
+											title = {<a>{item.course_name}</a>}
 											onClick = {()=>this.update(item)}
 										></List.Item.Meta>
 										
-										<Button onClick = {(e)=>this.Delete(e)}>删除课程</Button>
+										<Button onClick = {(item)=>this.Delete(item)}>删除课程</Button>
 									</List.Item>
 								)
 							}
