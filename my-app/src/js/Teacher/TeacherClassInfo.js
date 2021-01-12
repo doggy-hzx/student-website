@@ -120,8 +120,21 @@ class TeacherClassInfo extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                this.setState({
+                fetch(backendUrl + "get_courseinfo/", {
+                    method: "post",
+                    mode: "cors",
+                    body:JSON.stringify(this.props.location.state),
+                    credentials: "include",
                 })
+                    .then(res => res.json())
+                    .then((result) => {
+                        this.setState({
+                            assistance:result.ta_info,
+                        })
+                    },
+                        (error) => {
+                            console.log(error);
+                        })
             },
                 (error) => {
                     console.log(error);
@@ -138,8 +151,21 @@ class TeacherClassInfo extends Component {
         })
             .then(res => res.json())
             .then((result) => {
-                this.setState({
+                fetch(backendUrl + "get_courseinfo/", {
+                    method: "post",
+                    mode: "cors",
+                    body:JSON.stringify(this.props.location.state),
+                    credentials: "include",
                 })
+                    .then(res => res.json())
+                    .then((result) => {
+                        this.setState({
+                            assistance:result.ta_info,
+                        })
+                    },
+                        (error) => {
+                            console.log(error);
+                        })
             },
                 (error) => {
                     console.log(error);
