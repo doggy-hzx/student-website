@@ -12,15 +12,11 @@ class CreateHomework extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
             flag:0,
-
             classid:"",
-
             homeworkname:"",
             deadline:"",
             homeworkinfo:"",
-
         };
     }
 
@@ -146,7 +142,7 @@ class CreateHomework extends Component {
                 }/>
             )
         }else if(this.state.flag === 2){
-            return <Redirect to = {{pathname:'/TeacherClassInfo'}}></Redirect>
+            return <Redirect to = {{pathname:'/Teacher'}}></Redirect>
         }else if(this.state.flag === 3){
             return <Redirect to = {{pathname:'/Teacher'}}></Redirect>
         }

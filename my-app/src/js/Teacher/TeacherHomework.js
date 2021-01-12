@@ -75,7 +75,7 @@ class TeacherHomework extends Component {
                                     {this.state.homeworkname}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setHomeworkname(e)} style = {{width:100}}></Input>
+                                    {/* <Input onChange = {(e)=>this.setHomeworkname(e)} style = {{width:100}}></Input> */}
                                     <Divider type = "vertical"></Divider>
                                 </div>
                             </List.Item>
@@ -87,7 +87,7 @@ class TeacherHomework extends Component {
                                     {this.state.deadline}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setDeadline(e)} style = {{width:100}}></Input>
+                                    {/* <Input onChange = {(e)=>this.setDeadline(e)} style = {{width:100}}></Input> */}
                                     <Divider type = "vertical"></Divider>
                                 </div>
                             </List.Item>
@@ -99,7 +99,7 @@ class TeacherHomework extends Component {
                                     {this.state.homeworkinfo}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setHomeworkInfo(e)} style = {{width:100}}></Input>
+                                    {/* <Input onChange = {(e)=>this.setHomeworkInfo(e)} style = {{width:100}}></Input> */}
                                     <Divider type = "vertical"></Divider>
                                 </div>
                             </List.Item>
