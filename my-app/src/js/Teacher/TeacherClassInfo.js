@@ -11,7 +11,7 @@ var toHomework = {
     classid:'',
 }
 
-class ClassInfo extends Component {
+class TeacherClassInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -45,7 +45,7 @@ class ClassInfo extends Component {
         })
 
         fetch(backendUrl + "get_courseinfo", {
-            method: "get",
+            method: "post",
             mode: "cors",
             body:JSON.stringify(this.state.classid),
             credentials: "include",
@@ -301,4 +301,4 @@ class ClassInfo extends Component {
 
 }
 
-export default ClassInfo;
+export default TeacherClassInfo;
