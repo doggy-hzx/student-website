@@ -34,6 +34,7 @@ class TeacherClassInfo extends Component {
             tclasstime:"",
             tclassinfo:"",
             tclassteacher:"",
+            ta_id:"",
         };
 
     }
@@ -92,6 +93,12 @@ class TeacherClassInfo extends Component {
         })
     }
 
+    setAssistance=(e)=>{
+        this.setState({
+            ta_id:e.target.value,
+        })
+    }
+
     setToHomework=(e)=>{
         toHomework.homeworkname = e.name;
         toHomework.homeid = e.id;
@@ -99,6 +106,44 @@ class TeacherClassInfo extends Component {
         this.setState({
             flag:1,
         })
+    }
+
+    DelAssistance=(e)=>{
+
+        e.course_id = this.state.classid;
+
+        fetch(backendUrl + "del_ta/", {
+            method: "post",
+            mode: "cors",
+            body:JSON.stringify(e),
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+                this.setState({
+                })
+            },
+                (error) => {
+                    console.log(error);
+                })
+
+    }
+
+    addAssistance=()=>{
+        fetch(backendUrl + "new_ta/", {
+            method: "post",
+            mode: "cors",
+            body:JSON.stringify(this.state),
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+                this.setState({
+                })
+            },
+                (error) => {
+                    console.log(error);
+                })
     }
 
     Return=()=>{
@@ -184,7 +229,7 @@ class TeacherClassInfo extends Component {
 
                                             <Divider type = "vertical"></Divider>
 
-                                            <Button>删除助教</Button>
+                                            <Button onClick = {()=>this.DelAssistance(item)}>删除助教</Button>
 
                                         </List.Item>
                                     )
@@ -199,9 +244,9 @@ class TeacherClassInfo extends Component {
                                     {this.state.classtime}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setClasstime(e)} style = {{width:100}}></Input>
+                                    <Input onChange = {(e)=>this.setAssistance(e)} style = {{width:100}}></Input>
                                     <Divider type = "vertical"></Divider>
-                                    <Button>添加助教</Button>
+                                    <Button onClick = {()=>this.addAssistance()}>添加助教</Button>
                                 </div>
                             </List.Item>
                             <List.Item>
