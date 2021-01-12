@@ -101,7 +101,7 @@ class TeacherClassInfo extends Component {
 
     setToHomework=(e)=>{
         toHomework.homeworkname = e.name;
-        toHomework.homeid = e.id;
+        toHomework.homeworkid = e.id;
         toHomework.classid = this.state.classid;
         this.setState({
             flag:1,
@@ -159,7 +159,6 @@ class TeacherClassInfo extends Component {
         this.setState({
             flag:3,
         })
-        
     }
 
     Save=()=>{
@@ -248,7 +247,7 @@ class TeacherClassInfo extends Component {
                                     {this.state.classtime}
                                 </p>
                                 <div>
-                                    {/* <Input onChange = {(e)=>this.setAssistance(e)} style = {{width:100}}></Input> */}
+                                    <Input onChange = {(e)=>this.setAssistance(e)} style = {{width:100}}></Input>
                                     <Divider type = "vertical"></Divider>
                                     <Button onClick = {()=>this.addAssistance()}>添加助教</Button>
                                 </div>

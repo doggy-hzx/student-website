@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Title from '../Title'
 import { List, Button, Divider, Input } from 'antd'
 import { Redirect } from 'react-router-dom';
+import { backendUrl, getCookie, setCookie } from '../Common';
 
 var to = {
     stuname:"",
@@ -31,7 +32,25 @@ class TeacherHomework extends Component {
 
         this.setState({
             homeworkname:this.props.location.state.homeworkname,
+            homeworkid:this.props.location.state.homeworkid,
         })
+
+        fetch(backendUrl + "get_homework_info/", {
+            method: "get",
+            mode: "cors",
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+                this.setState({
+                    homeworkname:result.name,
+                    deadline:result.ddl,
+                    homeworkinfo:result.description,
+                })
+            },
+                (error) => {
+                    console.log(error);
+                })
 
     }
 
@@ -58,6 +77,21 @@ class TeacherHomework extends Component {
         this.setState({
             flag:1,
         })
+    }
+
+    ChangeHomework=()=>{
+        fetch(backendUrl + "get_courseinfo/", {
+            method: "post",
+            mode: "cors",
+            body:JSON.stringify(this.props.location.state),
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+            },
+                (error) => {
+                    console.log(error);
+                })
     }
 
     render() {
@@ -121,7 +155,7 @@ class TeacherHomework extends Component {
                             </List>
                             <Divider></Divider>
                             
-                            <Button>保存更改</Button>
+                            <Button onClick = {()=>this.ChangeHomework()}>保存更改</Button>
 
                             <Divider></Divider>
                     </div>
