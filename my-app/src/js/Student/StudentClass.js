@@ -23,7 +23,7 @@ class StudentClass extends Component {
 
 	componentDidMount(){
 
-        fetch(backendUrl + "get_course/", {
+        fetch(backendUrl + "get_courses/", {
             method: "get",
 			mode: "cors",
             credentials: "include",

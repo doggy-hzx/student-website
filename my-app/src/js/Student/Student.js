@@ -12,10 +12,10 @@ class User extends Component {
         super(props);
         this.state = {
             flag:1,
-            username:"student",
-            phone:"12345678910",
-            email:"3180105415@zju.edu.cn",
-            real_name:"xxx",
+            username:"",
+            phone:"",
+            email:"",
+            real_name:"",
         };
         this.Info = this.Info.bind(this);
         this.Change = this.Change.bind(this);
@@ -23,7 +23,7 @@ class User extends Component {
     }
 
     componentDidMount(){
-        /*fetch(backendUrl+"user/profile/",{
+        fetch(backendUrl+"user_info/",{
             method:"get",
             mode:"cors",
             credentials:"include",
@@ -39,7 +39,7 @@ class User extends Component {
             },
             (error)=>{
                 console.log(error);
-            })*/
+            })
     }
     
     Info=()=>{
