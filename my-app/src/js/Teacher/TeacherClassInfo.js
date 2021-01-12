@@ -18,7 +18,7 @@ class TeacherClassInfo extends Component {
 
             flag:0,
 
-            classid:"",
+            classid:'',
             classname:"",
             classtime:"",
             classinfo:"",
@@ -47,7 +47,7 @@ class TeacherClassInfo extends Component {
         fetch(backendUrl + "get_courseinfo/", {
             method: "post",
             mode: "cors",
-            body:JSON.stringify(this.state.classid),
+            body:JSON.stringify(this.props.location.state.classid),
             credentials: "include",
         })
             .then(res => res.json())

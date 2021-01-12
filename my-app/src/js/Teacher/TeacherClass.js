@@ -45,10 +45,6 @@ class TeacherClass extends Component {
 	update=(e)=>{
 		classupdate.classname = e.course_name;
 		classupdate.classid = e.course_id;
-
-		alert(classupdate.classname);
-		alert(classupdate.classid);
-
 		this.setState({
 			flag:5,
 		})
