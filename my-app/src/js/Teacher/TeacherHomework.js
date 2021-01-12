@@ -95,6 +95,12 @@ class TeacherHomework extends Component {
                 })
     }
 
+    Back=()=>{
+        this.setState({
+            flag:2,
+        })
+    }
+
     render() {
         if(this.state.flag === 0){
             return (
@@ -109,13 +115,15 @@ class TeacherHomework extends Component {
                                     <Divider type = "vertical"></Divider>
                                     {this.state.homeworkname}
                                 </p>
-                                <div>
-                                    {/* <Input onChange = {(e)=>this.setHomeworkname(e)} style = {{width:100}}></Input> */}
-                                    <Divider type = "vertical"></Divider>
-                                </div>
-                            </List.Item>
-                            <Divider></Divider>
-                            <List.Item>
+                            <div>
+                                {/* <Input onChange = {(e)=>this.setHomeworkname(e)} style = {{width:100}}></Input> */}
+                                <Divider type = "vertical"></Divider>
+                            </div>
+                        </List.Item>
+
+                        <Divider></Divider>
+                        
+                        <List.Item>
                                 <p>
                                     截止时间:
                                     <Divider type = "vertical"></Divider>
@@ -125,40 +133,47 @@ class TeacherHomework extends Component {
                                     {/* <Input onChange = {(e)=>this.setDeadline(e)} style = {{width:100}}></Input> */}
                                     <Divider type = "vertical"></Divider>
                                 </div>
-                            </List.Item>
-                            <Divider></Divider>
-                            <List.Item>
-                                <p>
-                                    作业内容:
-                                    <Divider type = "vertical"></Divider>
-                                    {this.state.homeworkinfo}
-                                </p>
-                                <div>
-                                    {/* <Input onChange = {(e)=>this.setHomeworkInfo(e)} style = {{width:100}}></Input> */}
-                                    <Divider type = "vertical"></Divider>
-                                </div>
-                            </List.Item>
-                            <Divider></Divider>
-                            <List
-                                bordered
-                                dataSource={this.state.submitstudent}
-                                renderItem={item => 
-                                
-                                    <List.Item>
-                                        <List.Item.Meta
-                                            title = {<a>{item.stuname}</a>}
-                                            onClick = {()=>this.setToStuHomework(item)}
-                                        >
-                                        </List.Item.Meta>
-                                    </List.Item>
-                                }
-                            >
-                            </List>
-                            <Divider></Divider>
-                            
-                            <Button onClick = {()=>this.ChangeHomework()}>保存更改</Button>
+                        </List.Item>
 
-                            <Divider></Divider>
+                        <Divider></Divider>
+
+                        <List.Item>
+                            <p>
+                                作业内容:
+                                <Divider type = "vertical"></Divider>
+                                {this.state.homeworkinfo}
+                            </p>
+                            <div>
+                                {/* <Input onChange = {(e)=>this.setHomeworkInfo(e)} style = {{width:100}}></Input> */}
+                                <Divider type = "vertical"></Divider>
+                            </div>
+                        </List.Item>
+                        <Divider></Divider>
+                        <List
+                            bordered
+                            dataSource={this.state.submitstudent}
+                            renderItem={item => 
+            
+                                <List.Item>
+                                    <List.Item.Meta
+                                        title = {<a>{item.stuname}</a>}
+                                        onClick = {()=>this.setToStuHomework(item)}
+                                    >
+                                    </List.Item.Meta>
+                                </List.Item>
+                            }
+                        >
+                        </List>
+
+                        <Divider></Divider>
+                            
+                        <Button onClick = {()=>this.ChangeHomework()} block>保存更改</Button>
+
+                        <Divider></Divider>
+                            
+                        <Button onClick = {()=>this.Back()} block>返回界面</Button>
+                            
+                        <Divider></Divider>
                     </div>
 
                 </div>
@@ -172,6 +187,8 @@ class TeacherHomework extends Component {
                     }
                 }/>
             )
+        }else if(this.state.flag === 2){
+            return <Redirect to = {{pathname:'/Teacher'}}></Redirect>
         }
     }
 }
