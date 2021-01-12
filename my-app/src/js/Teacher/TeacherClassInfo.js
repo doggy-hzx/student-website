@@ -45,7 +45,7 @@ class ClassInfo extends Component {
         })
 
         fetch(backendUrl + "get_courseinfo", {
-            method: "post",
+            method: "get",
             mode: "cors",
             body:JSON.stringify(this.state.classid),
             credentials: "include",
