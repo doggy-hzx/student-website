@@ -30,7 +30,7 @@ class StudentClass extends Component {
             .then(res => res.json())
             .then((result) => {
                 this.setState({
-                    class:result.class,
+                    class:result.data,
                 })
             },
                 (error) => {
