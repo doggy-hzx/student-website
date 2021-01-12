@@ -53,11 +53,11 @@ class TeacherClassInfo extends Component {
             .then(res => res.json())
             .then((result) => {
                 this.setState({
-                    classname: result.classname,
-                    classtime: result.classtime,
-                    classinfo: result.description,
-                    classteacher: result.teacher_name,
-                    studentnumber:result.stu_num,
+                    classname: result.course_name,
+                    classtime: result.course_time,
+                    classinfo: result.course_description,
+                    classteacher: result.course_teacher_name,
+                    studentnumber:result.course_stu_num,
                     assistance:result.ta_info,
                     homework:result.homeworks,
                 })
