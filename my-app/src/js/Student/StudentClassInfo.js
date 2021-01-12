@@ -19,15 +19,11 @@ class ClassInfo extends Component {
 
             classid:"",
             classname:"",
-            classtime:"周一 34",
-            classinfo:"this is a class",
-            classteacher:"teacher",
-            studentnumber:"1",
-            homework:[
-                {homeworkname:"homework1"},
-                {homeworkname:"homework2"},
-                {homeworkname:"homework3"},
-            ],
+            classtime:"",
+            classinfo:"",
+            classteacher:"",
+            studentnumber:"",
+            homework:[],
         };
     }
 
@@ -37,19 +33,22 @@ class ClassInfo extends Component {
             classname:this.props.location.state.classname,
         })
 
-        fetch(backendUrl + "user/profile/", {
-            method: "get",
+        fetch(backendUrl + "get_courseinfo/", {
+            method: "post",
             mode: "cors",
+            body:JSON.stringify(this.props.location.state),
             credentials: "include",
         })
             .then(res => res.json())
             .then((result) => {
                 this.setState({
-                    classname: result.classname,
-                    classtime: result.classtime,
-                    classinfo: result.classinfo,
-                    classteacher: result.classteacher,
-                    studentnumber:result.studentnumber,
+                    classname: result.course_name,
+                    classtime: result.course_time,
+                    classinfo: result.course_description,
+                    classteacher: result.course_teacher_name,
+                    studentnumber:result.course_stu_num,
+                    assistance:result.ta_info,
+                    homework:result.homeworks,
                 })
             },
                 (error) => {
