@@ -125,7 +125,7 @@ class CreateHomework extends Component {
 
                             <Divider></Divider>
                             
-                            <Button onClick = {()=>this.Return()} block></Button>
+                            <Button onClick = {()=>this.Return()} block>返回主页</Button>
                             
                             <Divider></Divider>
                     </div>

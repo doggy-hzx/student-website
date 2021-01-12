@@ -16,9 +16,7 @@ class TeacherClass extends Component {
 		super(props);
 		this.state = {
 			flag:4,
-			class:[
-				{course_name:123,course_id:123},
-			],
+			class:[],
 			course_id:"",
 		};
 	}
@@ -27,7 +25,7 @@ class TeacherClass extends Component {
 
         fetch(backendUrl + "get_courses/", {
 			method: "get",
-            mode: "cors",
+			mode: "cors",
             credentials: "include",
         })
             .then(res => res.json())

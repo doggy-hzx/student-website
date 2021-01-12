@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Title from '../Title'
 import { List, Button, Divider, Input } from 'antd';
+import { backendUrl, getCookie, setCookie } from '../Common';
 import { Redirect } from 'react-router-dom';
 
 const { TextArea } = Input;
@@ -12,10 +13,13 @@ class TeacherHomework extends Component {
 
             flag:0,
 
+            isDo:false,
+
+            homewokeid:"",
             homeworkname:"",
-            deadline:"周一 34",
-            homeworkinfo:"这是一个作业",
-            homeworkdo:"",
+            deadline:"",
+            homeworkinfo:"",
+            content:"你还没做作业！",
         };
     }
 
@@ -23,17 +27,70 @@ class TeacherHomework extends Component {
 
         this.setState({
             homeworkname:this.props.location.state.homeworkname,
+            homewokeid:this.props.location.state.homewokeid,
         })
+
+        fetch(backendUrl + "get_homework_info/", {
+            method: "post",
+            mode: "cors",
+            body:JSON.stringify(this.props.location.state),
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+                this.setState({
+                    homeworkname:result.name,
+                    deadline:result.ddl,
+                    homeworkinfo:result.description,
+                })
+            },
+                (error) => {
+                    console.log(error);
+                })
+
+        fetch(backendUrl + "get_submit/", {
+            method: "post",
+            mode: "cors",
+            body:JSON.stringify(this.props.location.state),
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+                if(result.isSuccess){
+                    this.setState({
+                        content:result.content,
+                    })
+                }
+            },
+                (error) => {
+                    console.log(error);
+                })
+
+
 
     }
 
     Submit=()=>{
-
+        fetch(backendUrl + "submit_homework/", {
+            method: "post",
+            mode: "cors",
+            body:JSON.stringify(this.state),
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then((result) => {
+                this.setState({
+                    class:result.class,
+                })
+            },
+            (error) => {
+                console.log(error);
+            })
     }
 
     Homework=(e)=>{
         this.setState({
-            homeworkdo:e.target.value,
+            content:e.target.value,
         })
     }
 
@@ -74,6 +131,14 @@ class TeacherHomework extends Component {
                                     {this.state.homeworkinfo}
                                 </p>
                             </List.Item>
+                            <Divider></Divider>
+                            
+                            <p>
+                                你的作业:
+                                <Divider type = "vertical"></Divider>
+                                {this.state.content}
+                            </p>
+
                             <Divider></Divider>
                             <List.Item>
 

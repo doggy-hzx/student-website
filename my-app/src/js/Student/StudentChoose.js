@@ -7,7 +7,8 @@ import StudentSelect from './StudentSelect'
 import { backendUrl, getCookie, setCookie } from '../Common';
 
 var classupdate = {
-	classname:'1'
+	classname:'',
+	classid:'',
 }
 
 class StudentChoose extends Component {
@@ -15,19 +16,15 @@ class StudentChoose extends Component {
 		super(props);
 		this.state = {
 			flag:4,
-			class:[
-				{classname:"class1"},
-				{classname:"class2"},
-				{classname:"class3"},
-			]
+			class:[],
 		};
 	}
 
 	componentDidMount(){
 
-        fetch(backendUrl + "user/profile/", {
+        fetch(backendUrl + "get_course/", {
             method: "get",
-            mode: "cors",
+			mode: "cors",
             credentials: "include",
         })
             .then(res => res.json())
