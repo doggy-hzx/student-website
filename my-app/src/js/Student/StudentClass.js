@@ -80,6 +80,24 @@ class StudentClass extends Component {
 		})
 	}
 
+	Select=(e)=>{
+ 		fetch(backendUrl+"select_course/",{
+            method:"post",
+			mode:"cors",
+			body:JSON.stringify(e),
+            credentials:"include",
+        })
+            .then(res => res.json())
+            .then((result)=>{
+				if(result.isSuccess){
+					alert("选课成功!");
+				}
+            },
+            (error)=>{
+                console.log(error);
+            })
+	}
+
     render() {
 		if(this.state.flag === 1){
             return <Redirect to = {{pathname:'/Student'}} />
@@ -104,7 +122,7 @@ class StudentClass extends Component {
 											title = {<a>{item.course_name}</a>}
 											onClick = {()=>this.update(item)}
 										></List.Item.Meta>
-										<Button>选择课程</Button>
+										<Button onClick = {()=>this.Select(item)}>选择课程</Button>
 									</List.Item>
 								)
 							}
