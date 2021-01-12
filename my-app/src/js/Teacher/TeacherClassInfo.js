@@ -47,7 +47,7 @@ class TeacherClassInfo extends Component {
         fetch(backendUrl + "get_courseinfo/", {
             method: "post",
             mode: "cors",
-            body:JSON.stringify(this.props.location.state.classid),
+            body:JSON.stringify(this.props.location.state),
             credentials: "include",
         })
             .then(res => res.json())
