@@ -153,9 +153,13 @@ class TeacherClassInfo extends Component {
     }
 
     CreateHomeword=()=>{
+
+        toHomework.classid = this.state.classid;
+
         this.setState({
             flag:3,
         })
+        
     }
 
     Save=()=>{
@@ -210,7 +214,7 @@ class TeacherClassInfo extends Component {
                                     {this.state.classname}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setClassname(e)} style = {{width:100}}></Input>
+                                    {/* <Input onChange = {(e)=>this.setClassname(e)} style = {{width:100}}></Input> */}
                                     <Divider type = "vertical"></Divider>
                                 </div>
                             </List.Item>
@@ -244,7 +248,7 @@ class TeacherClassInfo extends Component {
                                     {this.state.classtime}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setAssistance(e)} style = {{width:100}}></Input>
+                                    {/* <Input onChange = {(e)=>this.setAssistance(e)} style = {{width:100}}></Input> */}
                                     <Divider type = "vertical"></Divider>
                                     <Button onClick = {()=>this.addAssistance()}>添加助教</Button>
                                 </div>
@@ -256,7 +260,7 @@ class TeacherClassInfo extends Component {
                                     {this.state.classtime}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setClasstime(e)} style = {{width:100}}></Input>
+                                    {/* <Input onChange = {(e)=>this.setClasstime(e)} style = {{width:100}}></Input> */}
                                     <Divider type = "vertical"></Divider>
                                 </div>
                             </List.Item>
@@ -267,7 +271,7 @@ class TeacherClassInfo extends Component {
                                     {this.state.classteacher}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setClassinfo(e)} style = {{width:100}}></Input>
+                                    {/* <Input onChange = {(e)=>this.setClassinfo(e)} style = {{width:100}}></Input> */}
                                     <Divider type = "vertical"></Divider>
                                 </div>
                             </List.Item>
@@ -278,7 +282,7 @@ class TeacherClassInfo extends Component {
                                     {this.state.classinfo}
                                 </p>
                                 <div>
-                                    <Input onChange = {(e)=>this.setClassteacher(e)} style = {{width:100}}></Input>
+                                    {/* <Input onChange = {(e)=>this.setClassteacher(e)} style = {{width:100}}></Input> */}
                                     <Divider type = "vertical"></Divider>
                                 </div>
                             </List.Item>
