@@ -157,7 +157,7 @@ class ClassInfo extends Component {
                             
                                 <List.Item>
                                     <List.Item.Meta
-                                        title = {<a>{item.homeworkname}</a>}
+                                        title = {<a>{item.name}</a>}
                                         onClick = {()=>this.setToHomework(item)}
                                     >
                                     </List.Item.Meta>
