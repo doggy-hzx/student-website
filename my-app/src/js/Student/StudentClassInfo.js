@@ -83,6 +83,7 @@ class ClassInfo extends Component {
 
     setToHomework=(e)=>{
         toHomework.homeworkname = e.homeworkname;
+        toHomework.homeworkid = e.homeworkid;
         this.setState({
             flag:1,
         })
