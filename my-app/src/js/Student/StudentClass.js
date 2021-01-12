@@ -7,7 +7,8 @@ import StudentSelect from './StudentSelect'
 import { backendUrl, getCookie, setCookie } from '../Common';
 
 var classupdate = {
-	classname:'1'
+	classname:'',
+	classid:'',
 }
 
 class StudentClass extends Component {
@@ -16,16 +17,6 @@ class StudentClass extends Component {
 		this.state = {
 			flag:4,
 			class:[
-                {classname:"class1",classinfo:"class1 info"},
-                {classname:"class2",classinfo:"class2 info"},
-                {classname:"class3",classinfo:"class3 info"},
-                {classname:"class4",classinfo:"class4 info"},
-                {classname:"class5",classinfo:"class5 info"},
-                {classname:"class6",classinfo:"class6 info"},
-                {classname:"class7",classinfo:"class7 info"},
-                {classname:"class8",classinfo:"class8 info"},
-                {classname:"class9",classinfo:"class9 info"},
-                {classname:"class10",classinfo:"class10 info"},
 			]
 		};
 	}
@@ -51,6 +42,7 @@ class StudentClass extends Component {
 
 	update=(e)=>{
 		classupdate.classname = e.classname;
+		classupdate.classid = e.classid;
 		this.setState({
 			flag:5,
 		})

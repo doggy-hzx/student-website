@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 
 var toHomework = {
     homeworkname:'',
+    homeworkid:'',
 }
 
 class ClassInfo extends Component {
@@ -16,7 +17,7 @@ class ClassInfo extends Component {
 
             flag:0,
 
-            classid:"1",
+            classid:"",
             classname:"",
             classtime:"周一 34",
             classinfo:"this is a class",

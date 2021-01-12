@@ -36,8 +36,9 @@ class TeacherHomework extends Component {
         })
 
         fetch(backendUrl + "get_homework_info/", {
-            method: "get",
+            method: "post",
             mode: "cors",
+            body:JSON.stringify(this.props.location.state),
             credentials: "include",
         })
             .then(res => res.json())
