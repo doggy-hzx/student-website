@@ -44,6 +44,8 @@ class TeacherClassInfo extends Component {
             classid:this.props.location.state.classid,
         })
 
+        alert(this.state.classid);
+
         fetch(backendUrl + "get_courseinfo/", {
             method: "post",
             mode: "cors",

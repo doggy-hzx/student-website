@@ -34,7 +34,8 @@ class TeacherClass extends Component {
             .then((result) => {
                 this.setState({
                     class:result.data,
-                })
+				})
+				alert(this.state.class[0].course_id);
             },
                 (error) => {
                     console.log(error);
