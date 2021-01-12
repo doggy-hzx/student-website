@@ -16,8 +16,7 @@ class StudentClass extends Component {
 		super(props);
 		this.state = {
 			flag:4,
-			class:[
-			]
+			class:[]
 		};
 	}
 
@@ -102,7 +101,7 @@ class StudentClass extends Component {
 								item => (
 									<List.Item>
 										<List.Item.Meta
-											title = {<a>{item.classname}</a>}
+											title = {<a>{item.course_name}</a>}
 											onClick = {()=>this.update(item)}
 										></List.Item.Meta>
 										<Button>选择课程</Button>

@@ -22,7 +22,7 @@ class StudentChoose extends Component {
 
 	componentDidMount(){
 
-        fetch(backendUrl + "get_course/", {
+        fetch(backendUrl + "get_selected_courses/", {
             method: "get",
 			mode: "cors",
             credentials: "include",
@@ -100,7 +100,7 @@ class StudentChoose extends Component {
 								item => (
 									<List.Item>
 										<List.Item.Meta
-											title = {<a>{item.classname}</a>}
+											title = {<a>{item.course_name}</a>}
 											onClick = {()=>this.update(item)}
 										></List.Item.Meta>
 									</List.Item>
