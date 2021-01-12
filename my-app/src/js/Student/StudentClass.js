@@ -40,8 +40,8 @@ class StudentClass extends Component {
 	}
 
 	update=(e)=>{
-		classupdate.classname = e.classname;
-		classupdate.classid = e.classid;
+		classupdate.classname = e.course_name;
+		classupdate.classid = e.course_id;
 		this.setState({
 			flag:5,
 		})
