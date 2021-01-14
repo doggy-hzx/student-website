@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route ,Redirect } from 'react-router-dom';
 import { Button,Divider,Form,Input } from 'antd';
-import { backendUrl } from '../Common'
 import Title from '../Title';
-import TeacherSelect from './TeacherSelect';
+import StudentSelect from './StudentSelect';
 import '../../asserts/css/Change.css'
 
 class Change extends Component {
@@ -23,6 +22,34 @@ class Change extends Component {
     }
 
     componentDidMount(){
+
+        // fetch(backendUrl+"user/profile/changepass/set_new/",{
+        //     mode:"cors",
+        // credentials: 'include',
+        // })
+        //     .then(res => res.json())
+        //     .then((tokenresult)=>{
+        //     },
+        // (error)=>{
+        //     console.log(error);
+        // })
+
+        // fetch(backendUrl+"user/profile/",{
+        //     method:"get",
+        //     mode:"cors",
+        //     credentials:"include",
+        // })
+        //     .then(res => res.json())
+        //     .then((result)=>{
+        //         this.setState({
+        //             name:result.username,
+        //             phone:result.phone,
+        //             email:result.email,
+        //         })
+        //     },
+        //     (error)=>{
+        //         console.log(error);
+        //     })
     }
 
     GetUsername=(e)=>{
@@ -74,27 +101,23 @@ class Change extends Component {
         }
         
         if(flag === 0){
-            fetch(backendUrl+"modify_userinfo/",{
-                method:"post",
-                mode:"cors",
-                body:JSON.stringify(this.state),
-                credentials:"include",
-            })
-            .then(res => res.json())
-            .then((result)=>{
-
-                if(result.isSuccess){
-
-                    alert("修改成功");
-
-                    this.setState({
-                        flag:1,
-                    })
-                }
-            },
-            (error)=>{
-                console.log(error);
-            })
+            // fetch(backendUrl+"user/profile/modify/",{
+            //     method:"post",
+            //     body:JSON.stringify(this.state),
+            //     mode:"cors",
+            //     credentials: 'include',
+            // })
+            //     .then(res => res.json())
+            //     .then((result)=>{
+            //         if(result.isSucess){
+            //             alert("更改成功");
+            //         }else{
+            //             alert("更改失败");
+            //         }
+            //     },
+            // (error)=>{
+            //     console.log(error);
+            // })
         }
     }
 
@@ -113,12 +136,24 @@ class Change extends Component {
         })
     }
 
+    Choose=()=>{
+        this.setState({
+            flag:5,
+        })
+    }
+
+    Todo=()=>{
+        this.setState({
+            flag:6,
+        })
+    }
+
     render() {
         if(this.state.flag === 2){
             return (
                 <div>
                     <Title></Title>
-                    <TeacherSelect Info = {this.Info} Change = {this.Change} Class = {this.Class}></TeacherSelect>
+                    <StudentSelect Info = {this.Info} Change = {this.Change} Class = {this.Class} Choose = {this.Choose} Todo = {this.Todo}></StudentSelect>
                     <div>
                         <Input.Group className = "Change">
                             <Input prefix = "username" type = "text" placeholder = {this.state.name} ref = "name" onChange = {(e)=>this.GetUsername(e)}></Input>
@@ -138,9 +173,13 @@ class Change extends Component {
                 </div>
             );
         }else if(this.state.flag === 4){
-            return <Redirect to = {{pathname:'/TeacherClass'}} />
+            return <Redirect to = {{pathname:'/StudentClass'}} />
         }else if(this.state.flag === 1){
-            return <Redirect to = {{pathname:'/Teacher'}} />
+            return <Redirect to = {{pathname:'/Student'}} />
+        }else if(this.state.flag === 5){
+            return <Redirect to = {{pathname:'/StudentChoose'}} />
+        }else if(this.state.flag === 6){
+            return <Redirect to = {{pathname:'/StudentTodo'}} />
         }
     }
 }

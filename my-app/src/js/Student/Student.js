@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route ,Redirect } from 'react-router-dom';
-import { List,Button,Divider } from 'antd';
-import '../../asserts/css/Teacher.css'
+import '../../asserts/css/Student.css'
 import Title from '../Title';
-import TeacherSelect from './TeacherSelect';
+import StudentSelect from './StudentSelect';
 import { backendUrl } from '../Common'
+import { Divider, List } from 'antd';
 
 
 class User extends Component {
@@ -60,13 +60,25 @@ class User extends Component {
         })
     }
 
+    Choose=()=>{
+        this.setState({
+            flag:5,
+        })
+    }
+
+    Todo=()=>{
+        this.setState({
+            flag:6,
+        })
+    }
+
     render() {
         if(this.state.flag === 1){
             return (
                 <div>
                     <Title></Title>
-                    <TeacherSelect Info = {this.Info} Change = {this.Change} Class = {this.Class}></TeacherSelect>
-                    <div className = "Teacher">
+                    <StudentSelect Info = {this.Info} Change = {this.Change} Class = {this.Class} Choose = {this.Choose} Todo = {this.Todo}></StudentSelect>
+                    <div className = "Student">
                         <List>
                             <List.Item>
                                 <p>
@@ -101,9 +113,13 @@ class User extends Component {
                 </div>
             );
         }else if(this.state.flag === 2){
-            return <Redirect to = {{pathname:'/TeacherChange'}} />
+            return <Redirect to = {{pathname:'/StudentChange'}} />
         }else if(this.state.flag === 4){
-            return <Redirect to = {{pathname:'/TeacherClass'}} />
+            return <Redirect to = {{pathname:'/StudentClass'}} />
+        }else if(this.state.flag === 5){
+            return <Redirect to = {{pathname:'/StudentChoose'}} />
+        }else if(this.state.flag === 6){
+            return <Redirect to = {{pathname:'/StudentTodo'}} />
         }
     }
 }

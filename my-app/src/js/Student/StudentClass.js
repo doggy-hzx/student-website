@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import '../../asserts/css/Teacher.css'
+import '../../asserts/css/Student.css'
 import { List, Avatar, Button, Divider } from 'antd';
 import Title from '../Title';
-import TeacherSelect from './TeacherSelect'
+import StudentSelect from './StudentSelect'
 import { backendUrl, getCookie, setCookie } from '../Common';
 
 var classupdate = {
@@ -11,20 +11,19 @@ var classupdate = {
 	classid:'',
 }
 
-class TeacherClass extends Component {
+class StudentClass extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
 			flag:4,
-			class:[],
-			course_id:"",
+			class:[]
 		};
 	}
 
 	componentDidMount(){
 
         fetch(backendUrl + "get_courses/", {
-			method: "get",
+            method: "get",
 			mode: "cors",
             credentials: "include",
         })
@@ -32,7 +31,7 @@ class TeacherClass extends Component {
             .then((result) => {
                 this.setState({
                     class:result.data,
-				})
+                })
             },
                 (error) => {
                     console.log(error);
@@ -69,53 +68,49 @@ class TeacherClass extends Component {
     Class=()=>{
 	}
 
-	Delete=(e)=>{
-
+	Choose=()=>{
 		this.setState({
-			course_id:e.course_id,
+			flag:6,
 		})
+	}
+	
+	Todo=()=>{
+		this.setState({
+			flag:7,
+		})
+	}
 
-		fetch(backendUrl + "delete_course/", {
-			method: "post",
-			mode: "cors",
-			body:JSON.stringify(this.state),
-            credentials: "include",
+	Select=(e)=>{
+ 		fetch(backendUrl+"select_course/",{
+            method:"post",
+			mode:"cors",
+			body:JSON.stringify(e),
+            credentials:"include",
         })
             .then(res => res.json())
-            .then((result) => {
-				fetch(backendUrl + "get_courses/", {
-					method: "get",
-					mode: "cors",
-					credentials: "include",
-				})
-				.then(res => res.json())
-				.then((result) => {
-					this.setState({
-						class:result.data,
-					})
-				},
-					(error) => {
-						console.log(error);
-					})
+            .then((result)=>{
+				if(result.isSuccess){
+					alert("选课成功!");
+				}
             },
-                (error) => {
-                    console.log(error);
-                })
+            (error)=>{
+                console.log(error);
+            })
 	}
 
     render() {
 		if(this.state.flag === 1){
-            return <Redirect to = {{pathname:'/Teacher'}} />
+            return <Redirect to = {{pathname:'/Student'}} />
 		}else if(this.state.flag === 2){
-            return <Redirect to = {{pathname:'/TeacherChange'}} />
+            return <Redirect to = {{pathname:'/StudentChange'}} />
 		}else if(this.state.flag === 3){
-			return <Redirect to = {{pathname:'/TeacherCreateClass'}} />
+			return <Redirect to = {{pathname:'/StudentCreateClass'}} />
 		}else if(this.state.flag === 4){
 			return (
 				<div>
 					<Title></Title>
-					<TeacherSelect Info = {this.Info} Change = {this.Change} Class = {this.Class}></TeacherSelect>
-					<div className = "Teacher">
+					<StudentSelect Info = {this.Info} Change = {this.Change} Class = {this.Class} Choose = {this.Choose} Todo = {this.Todo}></StudentSelect>
+					<div className = "Student">
 						<List
 							header = {<div>已开课程</div>}
 							dataSource = {this.state.class}
@@ -123,37 +118,37 @@ class TeacherClass extends Component {
 							renderItem = {
 								item => (
 									<List.Item>
-
 										<List.Item.Meta
 											title = {<a>{item.course_name}</a>}
 											onClick = {()=>this.update(item)}
 										></List.Item.Meta>
-										
-										<Button onClick = {()=>this.Delete(item)}>删除课程</Button>
+										<Button onClick = {()=>this.Select(item)}>选择课程</Button>
 									</List.Item>
 								)
 							}
 
 						></List>
 
-				        <Button onClick = {this.Create}>创建课程</Button>
-
 				        <Divider></Divider>
 
 					</div>
 				</div>
 			);
+		}else if(this.state.flag === 6){
+			return <Redirect to = {{pathname:'/StudentChoose'}} />
 		}else if(this.state.flag === 5){
 			return (
 				<Redirect to = {
 					{
-						pathname:'/TeacherClassInfo',
+						pathname:'/StudentClassInfo',
 						state:classupdate,
 					}
 				}/>
 			)
+		}else if(this.state.flag === 7){
+			return <Redirect to = {{pathname:'/StudentTodo'}} />
 		}
     }
 }
 
-export default TeacherClass;
+export default StudentClass;

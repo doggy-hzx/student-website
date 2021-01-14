@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route ,Redirect } from 'react-router-dom';
 import {Menu} from 'antd';
-import '../asserts/css/UserSelect.css'
+import '../../asserts/css/StudentSelect.css'
 
-class UserSelect extends Component {
+class StudentSelect extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,8 +19,16 @@ class UserSelect extends Component {
         this.props.Change();
     }
 
-    Comment=()=>{
-        this.props.Comment();
+    Todo=()=>{
+        this.props.Todo();
+    }
+
+    Class=()=>{
+        this.props.Class();
+    }
+
+    Choose=()=>{
+        this.props.Choose();
     }
 
     Back=()=>{
@@ -32,11 +40,13 @@ class UserSelect extends Component {
     render() {
         if(this.state.flag === 1){
             return (
-                <div className = "UserSelect">
-                    <Menu>
+                <div className = "StudentSelect">
+                    <Menu mode  = "inline">
                         <Menu.Item onClick = {this.Info.bind()}>用户信息</Menu.Item>
                         <Menu.Item onClick = {this.Change.bind()}>修改信息</Menu.Item>
-                        <Menu.Item onClick = {this.Comment.bind()}>查看评论</Menu.Item>
+                        <Menu.Item onClick = {this.Todo.bind()}>待办事项</Menu.Item>
+                        <Menu.Item onClick = {this.Class.bind()}>选择课程</Menu.Item>
+                        <Menu.Item onClick = {this.Choose.bind()}>已选课程</Menu.Item>
                         <Menu.Item onClick = {this.Back}>返回首页</Menu.Item>
                     </Menu>
                 </div>
@@ -48,4 +58,5 @@ class UserSelect extends Component {
     }
 }
 
-export default UserSelect;
+export default StudentSelect;
+

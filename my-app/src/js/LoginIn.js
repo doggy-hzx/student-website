@@ -33,44 +33,52 @@ class LoginIn extends Component {
     }
 
     AppData=()=>{
-        fetch(backendUrl+"user/login/post/",{
+        fetch(backendUrl+"login/",{
             method:"post",
             mode:"cors",
             body:JSON.stringify(this.state),
-            headers:{
-                'content-type': 'application/json'
-            },
-            credentials: 'include',
+            credentials: 'include', 
         })
             .then(res => res.json())
             .then((result)=>{
                 this.setState({
                     isLogin:result.isSuccess,
-                    type:result.group,
+                    type:result.type,
                 })
-                alert(result.message)
-                if(result.isSuccess){
-                    //alert(result.session_id
-                    setCookie("sessionid",result.session_id)
+
+                if (this.state.type === "student" && this.state.isLogin) {
+                    this.setState({
+                        flag: 3,
+                    })
+                } else if (this.state.type === "teacher" && this.state.isLogin) {
+                    this.setState({
+                        flag: 4,
+                    })
+                } else {
+                    alert("用户名和密码错误!");
                 }
-
-
-            },
-        (error)=>{
-            console.log(error);
         })
+        /*$.ajaxSetup({ xhrFields: { withCredentials: true }, crossDomain: true});
+        $.post(backendUrl+"login/",JSON.stringify(this.state), function (result) {
+            this.setState({
+                isLogin: result.isSuccess,
+                type: result.type,
+            });
+
+            if (this.state.type === "student" && this.state.isLogin) {
+                this.setState({
+                    flag: 3,
+                })
+            } else if (this.state.type === "teacher" && this.state.isLogin) {
+                this.setState({
+                    flag: 4,
+                })
+            } else {
+                alert("用户名和密码错误!");
+            }
+
+        }.bind(this));*/
         
-        if(this.state.type === "student"&&this.state.isLogin){
-            this.setState({
-                flag:3,
-            })
-        }else if(this.state.type === "teacher"&&this.state.isLogin){
-            this.setState({
-                
-            })
-        }else{
-            alert("用户名和密码错误!");
-        }
     }
 
     Back=()=>{
@@ -79,35 +87,46 @@ class LoginIn extends Component {
         })
     }
 
+    Create=()=>{
+        this.setState({
+            flag:2,
+        })
+    }
+
     render(){
-        if(this.state.flag === 1){
+        if (this.state.flag === 1) {
             return (
                 <div>
                     <Title></Title>
-                    <div className = "Logo_Login" style={{float:'left'}}>
+                    <div className="Logo_Login" style={{ float: 'left' }}>
                         <Body></Body>
                     </div>
-                    <div className = "Info_Login" style={{float:'left'}}>
+                    <div className="Info_Login" style={{ float: 'left' }}>
                         <div>
                             <form>
                                 <div>
                                     <div>
-                                        <Input id = "text" type = "text" name = "用户名" placeholder = "用户名" ref = "name" onChange = {(e)=>this.GetUsername(e)}/>
+                                        <Input id="text" type="text" name="用户名" placeholder="用户名" ref="name" onChange={(e) => this.GetUsername(e)} />
                                     </div>
                                 </div>
                                 <div>
                                     <div>
-                                        <Input id = "text" type = "password" name = "密码" placeholder = "密码" ref = "code" onChange = {(e)=>this.GetCode(e)}/>
+                                        <Input id="text" type="password" name="密码" placeholder="密码" ref="code" onChange={(e) => this.GetCode(e)} />
                                     </div>
                                 </div>
                             </form>
                             <div>
-                                <Button onClick = {this.AppData}>
+                                <Button onClick={this.AppData}>
                                     登录
                                 </Button>
                             </div>
                             <div>
-                                <Button onClick = {this.Back}>
+                                <Button onClick={this.Create}>
+                                    注册
+                                </Button>
+                            </div>
+                            <div>
+                                <Button onClick={this.Back}>
                                     返回
                                 </Button>
                             </div>
@@ -115,10 +134,14 @@ class LoginIn extends Component {
                     </div>
                 </div>
             );
-        }else if(this.state.flag === 0){
-            return <Redirect to = {{pathname:'/'}} />
-        }else if(this.state.flag === 3){
-            return <Redirect to = {{pathname:'/User'}} />
+        } else if (this.state.flag === 0) {
+            return <Redirect to={{ pathname: '/' }} />
+        } else if (this.state.flag === 3) {
+            return <Redirect to={{ pathname: '/Student' }} />
+        } else if (this.state.flag === 4) {
+            return <Redirect to={{ pathname: '/Teacher'}} />
+        } else if(this.state.flag === 2) {
+            return <Redirect to={{ pathname: '/Create'}} />
         }
         
     }
