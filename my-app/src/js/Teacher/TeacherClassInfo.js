@@ -15,21 +15,28 @@ class TeacherClassInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
+<<<<<<< Updated upstream
 
             flag:0,
 
             classid:'',
+=======
+>>>>>>> Stashed changes
             classname:"",
             classtime:"",
             classinfo:"",
             classteacher:"",
             studentnumber:"",
+<<<<<<< Updated upstream
             
             homework:[
             ],
             assistance:[
             ],
             
+=======
+
+>>>>>>> Stashed changes
             tclassname:"",
             tclasstime:"",
             tclassinfo:"",
@@ -224,6 +231,7 @@ class TeacherClassInfo extends Component {
     }
 
     render() {
+<<<<<<< Updated upstream
         if(this.state.flag === 0){
             return (
                 <div>
@@ -247,6 +255,69 @@ class TeacherClassInfo extends Component {
                                 bordered
                                 header = {<div>助教姓名</div>}
                                 dataSource = {this.state.assistance}
+=======
+        return (
+            <div>
+                <Title></Title>
+                {this.props.location.state.classname}
+
+                <div className = "CreateClass">
+                    <List.Item>
+                        <p>
+                            课程名称:{this.state.classname}
+                        </p>
+                        <div>
+                            <Input onChange = {(e)=>this.setClassname(e)} style = {{width:100}}></Input>
+                            <Divider type="vertical" />
+                            <Button>保存更改</Button>
+                        </div>
+                    </List.Item>
+                    <Divider></Divider>
+                    <List.Item>
+                        <p>
+                            上课时间:{this.state.classtime}
+                        </p>
+                        <div>
+                            <Input onChange = {(e)=>this.setClasstime(e)} style = {{width:100}}></Input>
+                            <Divider type="vertical" />
+                            <Button>保存更改</Button>
+                        </div>
+                    </List.Item>
+                    <Divider></Divider>
+                    <List.Item>
+                        <p>
+                            任课老师:{this.state.classteacher}
+                        </p>
+                        <div>
+                            <Input onChange = {(e)=>this.setClassinfo(e)} style = {{width:100}}></Input>
+                            <Divider type="vertical" />
+                            <Button>保存更改</Button>
+                        </div>
+                    </List.Item>
+                    <Divider></Divider>
+                    <List.Item>
+                        <p>
+                            课程介绍:{this.state.classinfo}
+                        </p>
+                        <div>
+                            <Input onChange = {(e)=>this.setClassteacher(e)} style = {{width:100}}></Input>
+                            <Divider type="vertical" />
+                            <Button>保存更改</Button>
+                        </div>
+                    </List.Item>
+                    <Divider></Divider>
+                    <List.Item>
+                        <p>
+                            已选课人数:{this.state.classinfo}
+                        </p>
+                        <div>
+                            <Input onChange = {(e)=>this.setClassteacher(e)} style = {{width:100}}></Input>
+                            <Divider type="vertical" />
+                            <Button>保存更改</Button>
+                        </div>
+                    </List.Item>
+                </div>
+>>>>>>> Stashed changes
 
                                 renderItem = {
                                     item => (
